@@ -1,0 +1,38 @@
+[
+    {
+        "id" : 1 , 
+        "name" : "OE-RM",
+        "date_start" : "Aug 2020",
+        "date_end"  : "Sep 2020",
+        "preview"	: "",
+        "description" : "This is an outdoor equipment management and rental application. This application has features for managing resource and transaction, online rentals and whatsapp notification",
+        "jobdesc"	: "Designing system workflows, databases, ui/ux and building applications",
+        "tools"	: ["Laravel" , "Livewire" , "MySQL"],
+        "type" : "Website"
+    },
+    {
+        "id" : 2 , 
+        "name" : "MINI - CRM",
+        "date_start" : "Jul 2021",
+        "date_end"  : "Aug 2021",
+        "preview"	: "",
+        "description" :"This application is for multi-company adn their employee. This application has features such recap of sales transactions, setting time zones and languages manually. and email notifications.",
+        "jobdesc"	: "Build applications based on the design and feature list received",
+        "tools"	: ["Laravel" , "JQuery" , "MySQL"],
+        "type" : "Website"
+    },
+
+    {
+        "id" : 3 , 
+        "name" : "TLB",
+        "date_start" : "Apr 2020",
+        "date_end"  : "May 2020",
+        "preview"	: "",
+        "description" :"This application manages resources at PT Tiga Laskar Beton such as employee data, factory vehicle status, addition and subtraction of concrete raw materials based on the formula used by the factory.",
+        "jobdesc"	: "Designing and adding some featuers",
+        "tools"	: ["Laravel" , "JQuery" , "Postgre"],
+        "type" : "Website"
+    }
+
+    
+]
