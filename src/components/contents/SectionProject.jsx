@@ -2,6 +2,8 @@ import React from 'react'
 // import _ from "lodash";
 import Project from "../../data/project.json"
 
+import { Link } from 'react-router-dom'
+
 export const SectionProject = () => {
     
   return (
@@ -13,7 +15,7 @@ export const SectionProject = () => {
  
         <div className="slide-container">
             {Project.map(item => (            
-                
+
                     <div className="project-content" key={item.id}>
 
                         <div className="preview">
@@ -29,7 +31,7 @@ export const SectionProject = () => {
                                 ))}                             
                             </ul>
                         </div>
-
+            
                     </div>
 
                 

@@ -5,16 +5,13 @@ export const SectionProfile = () => {
     <div className='section profile'>
         
         <div className="row">
-
           <div className="col-lg-5 picture-part">
               <div className="picture d-flex justify-content-center">
                 <img src="/laptop.png" alt="/"  className="img-fluid" width="300" height="300"/>
               </div>
 
           </div>
-
           <div className="col-lg-7">
-
             <div className="description">
                 <h6>Hi, my name is</h6>
                 <h4> Muhamad Febri Algani. </h4>

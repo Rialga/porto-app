@@ -2,6 +2,7 @@ import React from 'react'
 import './Content.css'
 import {SectionProfile} from './SectionProfile'
 import {SectionProject} from './SectionProject'
+import {SectionExperience} from './SectionExperience'
 
 export const Content = () => {
   return (
@@ -9,6 +10,7 @@ export const Content = () => {
     <div className='container content'>
         
         <SectionProfile/>
+        <SectionExperience/>
         <SectionProject/>
 
     </div>

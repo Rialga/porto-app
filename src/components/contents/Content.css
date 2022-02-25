@@ -2,6 +2,8 @@
     min-height: 800px;
 }
 
+
+/* Section Profile */
 .profile{
       padding-top: 14rem;
 }
@@ -30,6 +32,49 @@
 }
 
 
+/* Section Experience */
+
+.timeline{
+    width: 60%;
+    margin-top: 2rem;
+    padding: 2.5rem;
+    box-shadow: 15px 15px 20px #dcdee0, -15px -15px 20px #fcfcfc;
+
+}
+
+ul.timeline-point {
+    list-style-type: none;
+    position: relative;
+}
+ul.timeline-point:before {
+    content: ' ';
+    background: #d4d9df;
+    display: inline-block;
+    position: absolute;
+    left: 29px;
+    width: 2px;
+    height: 100%;
+    z-index: 400;
+}
+ul.timeline-point > li {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+ul.timeline-point > li:before {
+    content: ' ';
+    background: white;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #33495e;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    z-index: 400;
+}
+
+
+/* Section Porto */
 
 .slide-container{
     width: 100%;
@@ -50,11 +95,12 @@
     max-width: 18rem;
     padding: 0.3rem;
     margin: 2.5rem 0rem 2rem 2.3rem;
-    /* background-color: #33495ee7;  */
-    background-color: #ecf0f3;
+    background-color: rgba(255, 255, 255, 0.562);
     border-radius: 0.4rem;
+    box-shadow: 2px 2px 5px #02010113, -2px -2px 5px #02010113;
+
     /* box-shadow: 0 1px 3px 0 #eeece900, 0 6px 20px 0 #8d8d8d67; */
-    box-shadow: 5px 5px 20px #cbced1, -10px -10px 20px rgb(255, 255, 255);
+    /* box-shadow: 5px 5px 10px #dcdee0, -5px -5px 10px #dcdee0; */
 }
 .preview{
     width:100%; 
@@ -66,7 +112,6 @@
     height:100%;
     width: 100%;
     border-radius: 0.4rem;
-
 }
 
 .project-desc{
@@ -114,6 +159,10 @@
     .nav-pad {
         padding: 0.438rem 2.188rem 0.438rem 2.188rem;
       }
+    .timeline{
+        width: 100%;
+    }
+
     
     
 }
