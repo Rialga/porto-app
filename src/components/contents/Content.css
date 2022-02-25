@@ -162,7 +162,16 @@ ul.timeline-point > li:before {
     .timeline{
         width: 100%;
     }
-
-    
     
 }
+
+
+/* Setup for screen wide 1366 */
+@media only screen and (max-width: 1366px) {
+    .profile{
+        padding-top: 6rem;
+  }
+
+}
+
+

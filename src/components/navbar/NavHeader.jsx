@@ -22,7 +22,7 @@ export function NavHeader() {
 
     return (
       
-    <Navbar className={navbar? 'navbar nav-pad active': 'navbar nav-pad'} variant="dark" sticky="top" expand="lg">
+    <Navbar className={navbar? ' nav-pad active': 'navbar nav-pad'} variant="dark" sticky="top" expand="lg">
         <div className='container'>
             <Navbar.Brand className="shake">
                  &lt;/&gt; 
