@@ -76,28 +76,47 @@ ul.timeline-point > li:before {
 
 /* Section Porto */
 
-.slide-container{
-    width: 100%;
-    display: flex;
-    border-radius: 0.3rem;
-    overflow-y: hidden;
-    overflow-x: scroll;
+.porto-container{
+
+    text-align:center;
 }
 
-.slide-container::-webkit-scrollbar{
-    width: 2em;
-    height: 1em;
+.slide-container{
+    text-align:left;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300.33px, 1fr));
+}
+
+.btn-load{
+    text-align: center;
+}
+
+.btn-load button{
+    border: none;
+    margin-top: 3rem;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 0.3rem;
+    background-color: #33495e;
+    color: wheat;
+    transition: all 0.3s linear;
+}
+
+.btn-load button:hover{
+    opacity: .8;
 }
 
 .project-content{  
     min-height: 25rem;
-    min-width: 18rem;
-    max-width: 18rem;
+    min-width: 18.5rem;
+    max-width: 20rem;
     padding: 0.3rem;
-    margin: 2.5rem 0rem 2rem 2.3rem;
+    margin: 2.5rem 0.7rem 2rem 0.7rem;
     background-color: rgba(255, 255, 255, 0.562);
     border-radius: 0.4rem;
     box-shadow: 2px 2px 5px #02010113, -2px -2px 5px #02010113;
+    transition: .3s;
+
 
     /* box-shadow: 0 1px 3px 0 #eeece900, 0 6px 20px 0 #8d8d8d67; */
     /* box-shadow: 5px 5px 10px #dcdee0, -5px -5px 10px #dcdee0; */
@@ -138,8 +157,15 @@ ul.timeline-point > li:before {
 
 }
 @media only screen and (max-width: 48rem) {
-    
-    
+
+    /* Nav bar */
+    .nav-pad {
+        padding: 0.438rem 2.188rem 0.438rem 2.188rem;
+      }
+
+
+
+    /* Section Profile */
     .profile{
         padding-top: 2rem;
     }
@@ -152,25 +178,42 @@ ul.timeline-point > li:before {
         margin : 5rem 1rem 2rem 1rem;
     }
 
+
+
+    /* Section Experience */
+    .timeline{
+        width: 100%;
+    }
+
+
+
+    /* Section Porto */
+    .slide-container{
+        display: flex;
+        margin-left: 0rem;
+        border-radius: 0.3rem;
+        justify-content: left;
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
+
     .project-content{
         margin: 1rem 2rem 1rem 2rem;
     }
 
-    .nav-pad {
-        padding: 0.438rem 2.188rem 0.438rem 2.188rem;
-      }
-    .timeline{
-        width: 100%;
+    .btn-load{
+        display: none;
     }
     
 }
+
 
 
 /* Setup for screen wide 1366 */
 @media only screen and (max-width: 1366px) {
     .profile{
         padding-top: 6rem;
-  }
+     }
 
 }
 

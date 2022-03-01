@@ -23,7 +23,7 @@ export function NavHeader() {
     return (
       
     <Navbar className={navbar? ' nav-pad active': 'navbar nav-pad'} variant="dark" sticky="top" expand="lg">
-        <div className='container'>
+        <div data-aos="zoom-in" aos_offset="100"  className='container'>
             <Navbar.Brand className="shake">
                  &lt;/&gt; 
             </Navbar.Brand>

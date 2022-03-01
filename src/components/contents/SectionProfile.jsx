@@ -4,7 +4,7 @@ export const SectionProfile = () => {
   return (
     <div className='section profile'>
         
-        <div className="row">
+        <div className="row" data-aos="fade-down" aos_offset="100">
           <div className="col-lg-5 picture-part">
               <div className="picture d-flex justify-content-center">
                 <img src="/laptop.png" alt="/"  className="img-fluid" width="300" height="300"/>

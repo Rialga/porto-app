@@ -56,6 +56,8 @@ nav div a {
 
 
 @media only screen and (max-width: 48rem) {
+
+  
   .nav-pad {
     padding: 0.438rem 2.188rem 0.438rem 2.188rem;
   }

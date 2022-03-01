@@ -3,7 +3,7 @@ import React from 'react'
 export const SectionExperience = () => {
   return (
       
-    <div className='section'>
+    <div data-aos="fade-down" aos_offset="100" className='section'>
       
       <div className="title">
               <h1> Work Exepreience </h1>
