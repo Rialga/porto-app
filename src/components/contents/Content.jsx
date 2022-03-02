@@ -1,8 +1,9 @@
 import React from 'react'
 import './Content.css'
 import {SectionProfile} from './SectionProfile'
-import {SectionProject} from './SectionProject'
 import {SectionExperience} from './SectionExperience'
+import {SectionProject} from './SectionProject'
+import {SectionContact} from './SectionContact'
 export const Content = () => {
 
   return (
@@ -12,6 +13,7 @@ export const Content = () => {
         <SectionProfile />
         <SectionExperience/>
         <SectionProject/>
+        <SectionContact/>
 
     </div>
   )
