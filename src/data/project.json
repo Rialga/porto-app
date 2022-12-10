@@ -1,7 +1,7 @@
 [
     {
         "id" : 1 , 
-        "name" : "OE-RM",
+        "name" : "OE-Rent Management",
         "date_start" : "Aug 2020",
         "date_end"  : "Sep 2020",
         "preview"	: "",
@@ -15,7 +15,7 @@
         "name" : "MINI - CRM",
         "date_start" : "Jul 2021",
         "date_end"  : "Aug 2021",
-        "preview"	: "",
+        "preview"	: "http://www.tigalaskarbeton.com/login",
         "description" :"This application is for multi-company adn their employee. This application has features such recap of sales transactions, setting time zones and languages manually. and email notifications.",
         "jobdesc"	: "Build applications based on the design and feature list received",
         "tools"	: ["Laravel" , "JQuery" , "MySQL"],
@@ -35,33 +35,33 @@
     },
     {
         "id" : 4 , 
-        "name" : "TLB",
-        "date_start" : "Apr 2020",
-        "date_end"  : "May 2020",
+        "name" : "Github List User",
+        "date_start" : "Sept 2022",
+        "date_end"  : "Nov 2022",
         "preview"	: "",
-        "description" :"This application manages resources at PT Tiga Laskar Beton such as employee data, factory vehicle status, addition and subtraction of concrete raw materials based on the formula used by the factory.",
-        "jobdesc"	: "Designing and adding some featuers",
-        "tools"	: ["Laravel" , "JQuery" , "Postgre"],
-        "type" : "Website"
+        "description" :"Application showing list of Github user, can search by github username and showing detail with user following and followers",
+        "jobdesc"	: "-",
+        "tools"	: ["Kotlin" , "Android Studio" ],
+        "type" : "Mobile"
     },
     {
         "id" : 5 , 
-        "name" : "TLB",
+        "name" : "To Do List App",
         "date_start" : "Apr 2020",
         "date_end"  : "May 2020",
         "preview"	: "",
-        "description" :"This application manages resources at PT Tiga Laskar Beton such as employee data, factory vehicle status, addition and subtraction of concrete raw materials based on the formula used by the factory.",
+        "description" :"Save Todo List activity and showing list based on user who creadt it.",
         "jobdesc"	: "Designing and adding some featuers",
-        "tools"	: ["Laravel" , "JQuery" , "Postgre"],
+        "tools"	: ["Java" , "expressJS" ],
         "type" : "Website"
     },
     {
         "id" : 6 , 
-        "name" : "TLB",
+        "name" : "SIPD",
         "date_start" : "Apr 2020",
         "date_end"  : "May 2020",
         "preview"	: "",
-        "description" :"This application manages resources at PT Tiga Laskar Beton such as employee data, factory vehicle status, addition and subtraction of concrete raw materials based on the formula used by the factory.",
+        "description" :"Manage goverment (Agam Regency Regional) data and show in to Dashboard ",
         "jobdesc"	: "Designing and adding some featuers",
         "tools"	: ["Laravel" , "JQuery" , "Postgre"],
         "type" : "Website"
@@ -90,7 +90,7 @@
     },
     {
         "id" : 9 , 
-        "name" : "TLB",
+        "name" : "",
         "date_start" : "Apr 2020",
         "date_end"  : "May 2020",
         "preview"	: "",

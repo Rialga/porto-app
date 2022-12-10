@@ -1,3 +1,7 @@
+.mb-10{
+    margin-bottom: 30px;
+}
+
 .section{
     min-height: 800px;
 }
@@ -26,7 +30,7 @@
 
 .title{
     text-align: center;
-    padding: 5rem 0rem 2rem 0rem;
+    padding: 5rem 0rem 1.5rem 0rem;
 }
 .content{
     padding : 5.4rem 0rem 1.875rem 0rem;
@@ -44,7 +48,11 @@
 
 
 .description>h4{
-    font-size: 2.5rem;
+    font-size: 2rem;
+}
+.description>h5{
+    font-size: 20px;
+    margin-bottom: 1rem;
 }
 
 
@@ -157,6 +165,10 @@ ul.timeline-point > li:before {
     color: #33495ee7;
 }
 
+.detail_project{
+    min-height: 95px;
+}
+
 .ul-highlight{
     margin-bottom: 1rem;
 }
@@ -175,19 +187,14 @@ ul.timeline-point > li:before {
 /* Contact */
 
 .contact-section{
-    height: 100vh;
-    position: relative;
-    justify-content: center;
+    width: 70%;
+    margin: auto;
+    margin-top: 10%;
 }
 
 .contact{
-    position: absolute;
-    left: 15%;
-    top: 37%;
-    width: 70%;
     border-radius: 1rem;
     padding: 2rem 2rem 3rem 2rem;
-    border: 0.5rem solid #00000011;
     text-align: center;
 }
 .contact ,h1 ,p, a{
@@ -195,9 +202,15 @@ ul.timeline-point > li:before {
 }
 
 
+/* New Secition Project */
 
 
+.icon-edit{
+    margin-bottom: 30px;
+    cursor: -webkit-grab; cursor: grab;
+}
 
+/* End */
 
 @media only screen and (max-width: 48rem) {
 
@@ -206,11 +219,13 @@ ul.timeline-point > li:before {
         padding: 0.438rem 2.188rem 0.438rem 2.188rem;
       }
 
-
+    .section{
+        min-height: 0;
+    }
 
     /* Section Profile */
     .profile{
-        padding-top: 2rem;
+        padding-top: 0rem;
     }
   
     .content {
@@ -241,11 +256,18 @@ ul.timeline-point > li:before {
     }
 
     .project-content{
-        margin: 1rem 2rem 1rem 2rem;
+        margin-top: 0;
+
     }
+
 
     .btn-load{
         display: none;
+    }
+
+    .contact-section{
+        width: 100%;
+        margin-top: 3rem;
     }
     
 }

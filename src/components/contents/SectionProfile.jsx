@@ -2,7 +2,7 @@ import React from 'react'
 
 export const SectionProfile = () => {
   return (
-    <div className='section profile'>
+    <div id="about" className='section profile'>
         
         <div className="row" data-aos="fade-down" aos_offset="100">
           <div className="col-lg-5 picture-part">
@@ -15,8 +15,12 @@ export const SectionProfile = () => {
             <div className="description">
                 <h6>Hi, my name is</h6>
                 <h4> Muhamad Febri Algani. </h4>
-                <h4> Im a Software Developer </h4>
-                <span> In nulla adipisicin quis eu sit id ut ex duis dolor. Irure laboris sunt non Lorem incididunt irure elit. Lorem tempor nulla Lorem reprehenderit proident aute incididunt tempor sint duis proident consectetur sint eu. Occaecat ad aliquip non fugiat aute eiusmod.</span>
+                <h5> Im a Software Developer </h5>
+                <span>
+                  I enjoy translating business processes or ideas into Software Application. I started focusing in programming about 4 years ago. I have built several web or mobile based (Android) applications. I also have work experience as a Software Engineer with responsibility for the development of the front end system <br/><br/>
+                  Here are a few technologies I've been working with recently :<br/>
+                  Java Scritp , PHP , Laravel, React, and Kotlin
+                  </span>
             </div>
 
           </div>

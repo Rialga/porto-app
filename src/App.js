@@ -14,7 +14,9 @@ function App() {
 
 
   useEffect(()=>{
-    Aos.init();
+    Aos.init();    <div class="container">
+        
+    </div>
   } ,[])
 
 

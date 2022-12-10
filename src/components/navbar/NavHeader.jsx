@@ -32,13 +32,13 @@ export function NavHeader() {
             <Navbar.Collapse className='nav-item justify-content-center'>
                 <ul className='navbar-nav ms-auto'>
                     <li className="nav-item">
-                        <Nav.Link href="#"> About </Nav.Link> 
+                        <Nav.Link href="#about"> About </Nav.Link> 
                     </li>                       
                     <li className="nav-item">
-                        <Nav.Link href="#"> Portofolio </Nav.Link>
+                        <Nav.Link href="#project"> Project </Nav.Link>
                     </li>                       
                     <li className="nav-item">
-                        <Nav.Link href="#"> Contact </Nav.Link>
+                        <Nav.Link href="#contact"> Contact </Nav.Link>
                     </li>                       
                 </ul>
             </Navbar.Collapse>

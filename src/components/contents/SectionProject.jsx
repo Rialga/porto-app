@@ -29,7 +29,7 @@ export const SectionProject = () => {
 
     return (
 
-    <div className='section'>
+    <div id="project" className='section'>
         <div data-aos="fade-down" aos_offset="100" className="title">
             <h1> My Project </h1>
         </div>
@@ -43,7 +43,7 @@ export const SectionProject = () => {
                         </div>
                         <div className="project-desc">
                             <h4>{item.name}</h4>
-                            <p> {item.description}</p>
+                            <p className='detail_project'> {item.description}</p>
                             <ul className="nav list-inline ml-auto ul-highlight">
                                 {item.tools.map(tool => (
                                     <li key={tool.toString()} className="list-inline-item highlight"><b>{tool}</b></li>

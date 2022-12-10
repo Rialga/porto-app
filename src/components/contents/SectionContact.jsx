@@ -1,13 +1,15 @@
 import React from 'react'
+import { SocialIcon } from 'react-social-icons';
 
 export const SectionContact = () => {
   return (
-    <div className='contact-section'>
+    <div id='contact' className='contact-section'>
     
         <div className="contact">
-            <h1> Get In Touch </h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, libero atque veniam officia suscipit accusantium natus voluptates maiores voluptas vero modi, doloremque culpa. Et recusandae placeat neque tempora similique libero.</p>
-            <a className='btn-cool border-animation' href="mailto:febrialganios@gmail.com"> Contact Me </a> 
+            <h2> Contact Me </h2> <br/>
+            <a href='mailto:febrialganios@gmail.com'><img src="/gmail_icon.png" className='icon-edit' alt="/" width="50"/></a> &nbsp;&nbsp;
+            <SocialIcon  url="https://www.linkedin.com/in/muhamad-febri-algani-311533205/" /> &nbsp;&nbsp;
+            <SocialIcon url="https://github.com/Rialga" /> &nbsp;&nbsp;
         </div>
     
     </div>
