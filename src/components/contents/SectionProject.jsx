@@ -6,11 +6,20 @@ import Aos from 'aos'
 
 export const SectionProject = () => {
 
-    const [numData, setNumData] = useState(3);
+    var  value = 3
+
+    if(getWindowDimensions() <= 768){
+      value = Object.keys(Project).length  
+    }
+    const [numData, setNumData] = useState(value);
     const [showButton, setShowButton] = useState('Show More');
     const slice = Project.slice(0, numData);
 
 
+    function getWindowDimensions() {
+        const { innerWidth: width } = window;
+        return width;
+      }
 
     const ShowButton  = () => {
         Aos.refresh();
@@ -26,6 +35,7 @@ export const SectionProject = () => {
         }
 
     }
+    
 
     return (
 
