@@ -1,25 +1,27 @@
 [
     {
         "id" : 1 , 
-        "name" : "OE-Rent Management",
-        "date_start" : "Aug 2020",
-        "date_end"  : "Sep 2020",
-        "preview"	: "",
-        "description" : "This is an outdoor equipment management and rental application. This application has features for managing resource and transaction, online rentals and whatsapp notification",
-        "jobdesc"	: "Designing system workflows, databases, ui/ux and building applications",
-        "tools"	: ["Laravel" , "Livewire" , "MySQL"],
-        "type" : "Website"
+        "name" : "SIDINDANG - Mobile",
+        "date_start" : "Sep 2022",
+        "date_end"  : "Nov 2020",
+        "preview"	: "sidindang-mobile.png",
+        "description" :"Market managament Application for DISDAG Padang Government. Records stores in every market in the city of Padang which is managed by the admin, grants access rights for each user and user validation by location. ",
+        "jobdesc"	: "Designing and adding some featuers",
+        "tools"	: ["Kotlin" , "Android Studio"],
+        "type" : "Website",
+        "url" : ""
     },
     {
         "id" : 2 , 
-        "name" : "MINI - CRM",
-        "date_start" : "Jul 2021",
-        "date_end"  : "Aug 2021",
-        "preview"	: "http://www.tigalaskarbeton.com/login",
-        "description" :"This application is for multi-company adn their employee. This application has features such recap of sales transactions, setting time zones and languages manually. and email notifications.",
-        "jobdesc"	: "Build applications based on the design and feature list received",
-        "tools"	: ["Laravel" , "JQuery" , "MySQL"],
-        "type" : "Website"
+        "name" : "SI - ALEK LUBEG",
+        "date_start" : "Apr 2022",
+        "date_end"  : "May 2022",
+        "preview"	: "simlubeg.png",
+        "description" :"Administration mangement system for Lubuk Begalung Subdistrict, Padang. Managing various types of administration that are integrated in real time from the Padang E-kelurahan application. Managed by several users with their respective access rights. " ,
+        "jobdesc"	: "Designing and adding some featuers",
+        "tools"	: ["PHP" , "JQuery"],
+        "type" : "Website",
+        "url" : "http://sialek.padang.go.id/"
     },
 
     {
@@ -27,77 +29,84 @@
         "name" : "TLB",
         "date_start" : "Apr 2020",
         "date_end"  : "May 2020",
-        "preview"	: "",
+        "preview"	: "tlb.png",
         "description" :"This application manages resources at PT Tiga Laskar Beton such as employee data, factory vehicle status, addition and subtraction of concrete raw materials based on the formula used by the factory.",
         "jobdesc"	: "Designing and adding some featuers",
         "tools"	: ["Laravel" , "JQuery" , "Postgre"],
-        "type" : "Website"
+        "type" : "Website",
+        "url" : "http://www.tigalaskarbeton.com/login"
     },
     {
         "id" : 4 , 
         "name" : "Github List User",
-        "date_start" : "Sept 2022",
-        "date_end"  : "Nov 2022",
-        "preview"	: "",
-        "description" :"Application showing list of Github user, can search by github username and showing detail with user following and followers",
+        "date_start" : "Feb 2022",
+        "date_end"  : "Feb 2022",
+        "preview"	: "github-user.png",
+        "description" :"With Github API this Application showing list of Github user, can search by github username and showing detail with user following and followers list. With local storrage can add user into favorite list",
         "jobdesc"	: "-",
         "tools"	: ["Kotlin" , "Android Studio" ],
-        "type" : "Mobile"
+        "type" : "Mobile",
+        "url" : ""
     },
     {
         "id" : 5 , 
-        "name" : "To Do List App",
-        "date_start" : "Apr 2020",
-        "date_end"  : "May 2020",
-        "preview"	: "",
-        "description" :"Save Todo List activity and showing list based on user who creadt it.",
-        "jobdesc"	: "Designing and adding some featuers",
-        "tools"	: ["Java" , "expressJS" ],
-        "type" : "Website"
+        "name" : "OE-Rent Management",
+        "date_start" : "Aug 2020",
+        "date_end"  : "Sep 2020",
+        "preview"	: "-",
+        "description" : "This is an outdoor equipment management and rental application. This application has features for managing resource and transaction, online rentals and whatsapp notification",
+        "jobdesc"	: "Designing system workflows, databases, ui/ux and building applications",
+        "tools"	: ["Laravel" , "Livewire" , "MySQL"],
+        "type" : "Website",
+        "url" : ""
     },
     {
         "id" : 6 , 
-        "name" : "SIPD",
+        "name" : "SIDPD",
         "date_start" : "Apr 2020",
         "date_end"  : "May 2020",
-        "preview"	: "",
-        "description" :"Manage goverment (Agam Regency Regional) data and show in to Dashboard ",
+        "preview"	: "-",
+        "description" :"Planning Management Application System for Agam Regency. This application records data carried out by each user and then displays it in  a dashboard",
         "jobdesc"	: "Designing and adding some featuers",
         "tools"	: ["Laravel" , "JQuery" , "Postgre"],
-        "type" : "Website"
+        "type" : "Website",
+        "url" : ""
     },
     {
         "id" : 7 , 
-        "name" : "TLB",
+        "name" : "To Do List App",
         "date_start" : "Apr 2020",
         "date_end"  : "May 2020",
-        "preview"	: "",
-        "description" :"This application manages resources at PT Tiga Laskar Beton such as employee data, factory vehicle status, addition and subtraction of concrete raw materials based on the formula used by the factory.",
+        "preview"	: "-",
+        "description" :"Save Todo List activity and showing list based on user who creadt it.",
         "jobdesc"	: "Designing and adding some featuers",
-        "tools"	: ["Laravel" , "JQuery" , "Postgre"],
-        "type" : "Website"
+        "tools"	: ["Java" , "Android Studio" , "expressJS"],
+        "type" : "Website",
+        "url" : ""
     },
     {
         "id" : 8 , 
-        "name" : "TLB",
-        "date_start" : "Apr 2020",
-        "date_end"  : "May 2020",
-        "preview"	: "",
-        "description" :"This application manages resources at PT Tiga Laskar Beton such as employee data, factory vehicle status, addition and subtraction of concrete raw materials based on the formula used by the factory.",
-        "jobdesc"	: "Designing and adding some featuers",
-        "tools"	: ["Laravel" , "JQuery" , "Postgre"],
-        "type" : "Website"
+        "name" : "MINI - CRM",
+        "date_start" : "Jul 2021",
+        "date_end"  : "Aug 2021",
+        "preview"	: "-",
+        "description" :"This application is for multi-company adn their employee. This application has features such recap of sales transactions, setting time zones and languages manually. and email notifications.",
+        "jobdesc"	: "Build applications based on the design and feature list received",
+        "tools"	: ["Laravel" , "JQuery" , "MySQL"],
+        "type" : "Website",
+        "url"  : ""
     },
     {
         "id" : 9 , 
-        "name" : "",
-        "date_start" : "Apr 2020",
-        "date_end"  : "May 2020",
-        "preview"	: "",
-        "description" :"This application manages resources at PT Tiga Laskar Beton such as employee data, factory vehicle status, addition and subtraction of concrete raw materials based on the formula used by the factory.",
+        "name" : "SI-PELAPORAN",
+        "date_start" : "Jan 2020",
+        "date_end"  : "Feb 2020",
+        "preview"	: "-",
+        "description" :"Report Mangament Application at Pauh Police Station, Padang. This application helps officers in recording and recapping of loss reports data. ",
         "jobdesc"	: "Designing and adding some featuers",
-        "tools"	: ["Laravel" , "JQuery" , "Postgre"],
-        "type" : "Website"
+        "tools"	: ["Laravel" , "JQuery" ],
+        "type" : "Website",
+        "url" : ""
     }
 
 

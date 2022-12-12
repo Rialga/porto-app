@@ -6,7 +6,7 @@ import Aos from 'aos'
 
 export const SectionProject = () => {
 
-    const [numData, setNumData] = useState(4);
+    const [numData, setNumData] = useState(3);
     const [showButton, setShowButton] = useState('Show More');
     const slice = Project.slice(0, numData);
 
@@ -21,7 +21,7 @@ export const SectionProject = () => {
           
         }
         else{
-            setNumData(4)
+            setNumData(3)
             setShowButton('Show More') 
         }
 
@@ -39,11 +39,13 @@ export const SectionProject = () => {
                 {slice.map(item => (            
                     <div data-aos="fade-down" aos_offset="100" className="project-content" key={item.id}>
                         <div className="preview">
-                            <img src="/tes.png" alt="/"/>
+                            
+                            <img src={item.preview ? "/"+item.preview : "/tes.png"} className="adjust-image" alt="/"/>
                         </div>
                         <div className="project-desc">
-                            <h4>{item.name}</h4>
-                            <p className='detail_project'> {item.description}</p>
+                            <h4>{item.name}</h4> 
+                            {item.url ? <p className='detail_project'> {item.description}  <a href={item.url} target='__blank' className='link-url'> Preview </a> </p> : <p className='detail_project'> {item.description} </p> }
+                            
                             <ul className="nav list-inline ml-auto ul-highlight">
                                 {item.tools.map(tool => (
                                     <li key={tool.toString()} className="list-inline-item highlight"><b>{tool}</b></li>
