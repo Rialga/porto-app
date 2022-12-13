@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/porto-app/static/css/main.12bc8d58.css",
-    "main.js": "/porto-app/static/js/main.68e898d1.js",
+    "main.js": "/porto-app/static/js/main.553b091e.js",
     "static/js/787.229e19e4.chunk.js": "/porto-app/static/js/787.229e19e4.chunk.js",
     "index.html": "/porto-app/index.html",
     "main.12bc8d58.css.map": "/porto-app/static/css/main.12bc8d58.css.map",
-    "main.68e898d1.js.map": "/porto-app/static/js/main.68e898d1.js.map",
+    "main.553b091e.js.map": "/porto-app/static/js/main.553b091e.js.map",
     "787.229e19e4.chunk.js.map": "/porto-app/static/js/787.229e19e4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.12bc8d58.css",
-    "static/js/main.68e898d1.js"
+    "static/js/main.553b091e.js"
   ]
 }
