@@ -7,7 +7,7 @@ export const SectionProfile = () => {
         <div className="row" data-aos="fade-down" aos_offset="100">
           <div className="col-lg-5 picture-part">
               <div className="picture d-flex justify-content-center">
-                <img src="/me.png" alt="/"  className="img-fluid" width="300" height="300"/>
+                <img src={process.env.PUBLIC_URL+"/me.png"} alt="/"  className="img-fluid" width="300" height="300"/>
               </div>
 
           </div>
