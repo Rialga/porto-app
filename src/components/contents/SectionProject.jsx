@@ -50,7 +50,7 @@ export const SectionProject = () => {
                     <div data-aos="fade-down" aos_offset="100" className="project-content" key={item.id}>
                         <div className="preview">
                             
-                            <img src={item.preview ? "/"+item.preview : "/tes.png"} className="adjust-image" alt="/"/>
+                            <img src={item.preview ? process.env.PUBLIC_URL+"/"+item.preview : process.env.PUBLIC_URL+"/tes.png"} className="adjust-image" alt="/"/>
                         </div>
                         <div className="project-desc">
                             <h4>{item.name}</h4> 
