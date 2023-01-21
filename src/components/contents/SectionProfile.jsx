@@ -17,9 +17,9 @@ export const SectionProfile = () => {
                 <h4> Muhamad Febri Algani. </h4>
                 <h5> Im a Software Developer </h5>
                 <span>
-                  I enjoy translating business processes or ideas into Software Application. I started focusing in programming about 4 years ago. I have built several web or mobile based (Android) applications. I also have work experience as a Software Engineer with responsibility for the development of the front end system <br/><br/>
-                  Here are a few technologies I've been working with recently :<br/>
-                  Java Scritp , PHP , Laravel, React, and Kotlin
+                  I enjoy translating business processes or ideas into Software Application. I started focusing in programming about 4 years ago. I have built several web or mobile based (Android) applications. I also have work experience as a Software Engineer with responsibility for frontend system development <br/><br/>
+                  Here are a few technologies I've been working with recently:<br/>
+                  Java Script , PHP , Laravel, React, and Kotlin
                   </span>
             </div>
 
