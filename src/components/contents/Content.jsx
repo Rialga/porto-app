@@ -12,7 +12,7 @@ export const Content = () => {
         
         <SectionProfile />
         <SectionExperience/>
-        <SectionProject/>
+        {/* <SectionProject/> */}
         <SectionContact/>
 
     </div>

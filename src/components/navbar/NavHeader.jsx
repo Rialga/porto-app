@@ -1,50 +1,43 @@
-import React , { useState } from 'react';
-import './NavHeader.css'
+import React, { useState, useEffect } from 'react';
+import './NavHeader.css';
 import { Nav, Navbar } from 'react-bootstrap';
 
+const navLinks = [
+    { href: '#about', label: 'About' },
+    // { href: '#project', label: 'Project' },
+    { href: '#contact', label: 'Contact' },
+];
 
 export function NavHeader() {
+    const [navbar, setNavbar] = useState(false);
 
-    const[navbar , setNavbar] = useState(false)
-    const navbarAnimation = () => {
-        
-        if(window.innerWidth > 800){
-            if(window.scrollY >= 80){
-                setNavbar(true)
-            }else{
-                setNavbar(false)
-
+    useEffect(() => {
+        const navbarAnimation = () => {
+            if (window.innerWidth > 800) {
+                setNavbar(window.scrollY >= 80);
             }
-        }
-    }
-
-    window.addEventListener('scroll',navbarAnimation)
+        };
+        window.addEventListener('scroll', navbarAnimation);
+        return () => window.removeEventListener('scroll', navbarAnimation);
+    }, []);
 
     return (
-      
-    <Navbar className={navbar? ' nav-pad active': 'navbar nav-pad'} variant="dark" sticky="top" expand="lg">
-        <div data-aos="zoom-in" aos_offset="100"  className='container'>
-            <Navbar.Brand className="shake">
-                 &lt;/&gt; 
-            </Navbar.Brand>
-
-            <Navbar.Toggle />
-            <Navbar.Collapse className='nav-item justify-content-center'>
-                <ul className='navbar-nav ms-auto'>
-                    <li className="nav-item">
-                        <Nav.Link href="#about"> About </Nav.Link> 
-                    </li>                       
-                    <li className="nav-item">
-                        <Nav.Link href="#project"> Project </Nav.Link>
-                    </li>                       
-                    <li className="nav-item">
-                        <Nav.Link href="#contact"> Contact </Nav.Link>
-                    </li>                       
-                </ul>
-            </Navbar.Collapse>
-        </div>
-    </Navbar>
-   
-
+        <Navbar className={navbar ? 'nav-pad active' : 'navbar nav-pad'} variant="dark" sticky="top" expand="lg">
+            <div data-aos="zoom-in" aos_offset="100" className="container">
+                <Navbar.Brand className="shake">
+                    &lt;/&gt;
+                </Navbar.Brand>
+                <Navbar.Toggle />
+                <Navbar.Collapse className="nav-item justify-content-center">
+                    <ul className="navbar-nav ms-auto">
+                        {navLinks.map(({ href, label }) => (
+                            <li className="nav-item" key={href}>
+                                <Nav.Link href={href}>{label}</Nav.Link>
+                            </li>
+                        ))}
+                    </ul>
+                </Navbar.Collapse>
+            </div>
+        </Navbar>
     );
 }
