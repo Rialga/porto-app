@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import WebLayout from '@/components/layouts/WebLayout'
 import Home from '@/pages/home'
 
+
 const router = createBrowserRouter([
   {
     path: '/',
