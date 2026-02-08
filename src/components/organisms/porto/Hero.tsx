@@ -3,7 +3,6 @@ import Text from '@/components/atoms/Text'
 import Button from '@/components/atoms/Button'
 import SocialLink from '@/components/molecules/SocialLink'
 import { ArrowRight } from 'lucide-react'
-import Profile from '@/assets/images/gani-image.jpg'
 export default function Hero() {
   return (
     <section id="home" className="section container">
