@@ -6,6 +6,7 @@ import Button from '@/components/atoms/Button'
 
 interface ProjectCardProps {
   title: string
+  subtitle: string
   description: string
   image?: string
   technologies: string[]
@@ -16,6 +17,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({
   title,
+  subtitle,
   description,
   image,
   technologies,
@@ -42,6 +44,10 @@ export default function ProjectCard({
       <div className="p-6">
         <Heading level={3} className="mb-2">
           {title}
+        </Heading>
+
+        <Heading level={5} className="mb-2 text-gray-700">
+          {subtitle}
         </Heading>
 
         <Text size="base" color="muted" className="mb-4">

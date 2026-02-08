@@ -11,7 +11,7 @@ export default function Hero() {
         {/* Content */}
         <div className="space-y-6">
           <div>
-            <p className="text-accent font-semibold mb-2">Welcome to my portfolio</p>
+            <p className="text-accent font-semibold mb-2">Welcome !</p>
             <Heading level={1}>Frontend Developer & Creative Problem Solver</Heading>
           </div>
 
@@ -55,7 +55,7 @@ export default function Hero() {
         </div>
 
         {/* Avatar/Image */}
-        <div className="flex justify-center">
+        <div className="hidden md:flex justify-center">
           <div className="w-64 h-64 md:w-80 md:h-80 rounded-lg overflow-hidden border-4 border-accent/20 shadow-lg">
             <div className="w-full h-full bg-linear-to-br from-accent/10 to-secondary flex items-center justify-center">
               <img
