@@ -16,11 +16,11 @@
 
   --popover-foreground: oklch(0.145 0 0);
 
-  --primary: #f82c17;
+  --primary: #2F5D62;
 
   --primary-foreground: oklch(0.985 0 0);
 
-  --secondary: #e6e6e6;
+  --secondary: #F4A261;
 
   --secondary-foreground: oklch(0.205 0 0);
 
@@ -28,7 +28,7 @@
 
   --muted-foreground: oklch(0.556 0 0);
 
-  --accent: #f82c17;
+  --accent: #F4A261;
 
   --accent-foreground: #fafafa;
 
@@ -390,6 +390,14 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
 
 @layer base {
   * {
@@ -431,5 +439,17 @@
   h6 {
     font-size: 20px;
     line-height: 30px;
+  }
+
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-center mb-12;
   }
 }

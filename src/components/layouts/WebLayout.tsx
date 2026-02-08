@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import type { ReactNode } from 'react'
-import { Footer } from '@/components/organisms/porto/Footer'
-import { Navigation } from '@/components/layouts/Navigation'
+import Header from '@/components/organisms/porto/Header'
+import Footer from '@/components/organisms/porto/Footer'
 
 interface WebLayoutProps {
   children?: ReactNode
@@ -9,8 +9,8 @@ interface WebLayoutProps {
 
 export const WebLayout = ({ children }: WebLayoutProps) => {
   return (
-    <div className="min-h-screen bg-[#F7EDE2] flex flex-col">
-      <Navigation />
+    <div className="min-h-screen bg-[#F0EEE9] flex flex-col">
+      <Header />
       <main className="flex-1 container mx-auto px-4 py-8">{children || <Outlet />}</main>
       <Footer />
     </div>
