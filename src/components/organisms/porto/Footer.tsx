@@ -14,7 +14,7 @@ export default function Footer() {
           {/* About */}
           <div>
             <Heading level={4} className="!text-primary-foreground mb-4">
-              MFA
+              Muhamad Febri Algani  
             </Heading>
             <Text size="sm" className="!text-primary-foreground/80">
               Frontend Developer passionate about creating beautiful and functional web experiences.
@@ -48,17 +48,17 @@ export default function Footer() {
             <div className="flex flex-col gap-3">
               <SocialLink
                 type="github"
-                href="https://github.com"
+                href="https://github.com/Rialga/"
                 label="GitHub"
               />
               <SocialLink
                 type="linkedin"
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/muhamad-febri-algani-311533205/"
                 label="LinkedIn"
               />
               <SocialLink
                 type="email"
-                href="mailto:hello@example.com"
+                href="mailto:febrialganios@gmail.com"
                 label="Email"
               />
             </div>
@@ -70,12 +70,8 @@ export default function Footer() {
 
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row items-center justify-between">
-          <Text size="sm" className="!text-primary-foreground/70">
-            <span className="flex items-center gap-1">
-              Made with <Heart size={16} className="text-red-500" /> by Muhamad Febri Algani
-            </span>
-          </Text>
-          <Text size="sm" className="!text-primary-foreground/70">
+     
+          <Text size="sm" className="text-primary-foreground/70">
             © {currentYear} All rights reserved.
           </Text>
         </div>

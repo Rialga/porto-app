@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import Heading from '@/components/atoms/Heading'
-import Button from '@/components/atoms/Button'
+import Icon from '../../../../public/code-icon-png-0.png'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -19,9 +19,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
       <nav className="container flex items-center justify-between h-16">
         <Heading level={3} className="text-xl! md:text-2xl!">
-          <a href="#" className="text-accent hover:text-accent/80 transition-colors">
-            MFA
-          </a>
+          <img src={Icon} alt="Logo" className="w-8 h-8 inline-block mr-2 -mt-1" />
         </Heading>
 
         {/* Desktop Menu */}
@@ -38,11 +36,11 @@ export default function Header() {
         </div>
 
         {/* CTA Button */}
-        <div className="hidden md:block">
+        {/* <div className="hidden md:block">
           <Button variant="primary" size="sm">
             Get in Touch
           </Button>
-        </div>
+        </div> */}
 
         {/* Mobile Menu Button */}
         <button
@@ -68,9 +66,9 @@ export default function Header() {
                 {link.label}
               </a>
             ))}
-            <Button variant="primary" size="md" className="w-full">
+            {/* <Button variant="primary" size="md" className="w-full">
               Get in Touch
-            </Button>
+            </Button> */}
           </div>
         </div>
       )}

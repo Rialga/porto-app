@@ -33,7 +33,7 @@ export const projects: Project[] = [
     liveUrl: 'https://example.com',
     githubUrl: 'https://github.com',
   },
-  
+
   {
     id: '3',
     title: 'Analytics Dashboard',
@@ -68,30 +68,40 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     id: '1',
-    title: 'Senior Frontend Developer',
-    company: 'Tech Company Inc.',
+    title: 'Frontend Developer',
+    company: 'PCS Indonesia.',
     period: '2023 - Present',
     description:
       'Led the development of multiple web applications with focus on performance optimization and user experience. Mentored junior developers and established best practices for the team.',
-    technologies: ['React', 'TypeScript', 'React Query', 'Tailwind CSS'],
+    technologies: [
+      'React',
+      'RTK Query',
+      'Vue.js',
+      'Vuex',
+      'Tanstack Query',
+      'Tailwind CSS',
+      'Shadcn UI',
+      'Vite',
+      'Bootstrap',
+    ],
   },
   {
     id: '2',
-    title: 'Frontend Developer',
-    company: 'Digital Solutions Ltd.',
+    title: 'Sofware Engineer | Frontend',
+    company: 'PT Tigernix Indonesia',
     period: '2021 - 2023',
     description:
-      'Developed responsive web applications using Vue.js and React. Collaborated with UX designers to implement pixel-perfect designs and improved application performance by 40%.',
-    technologies: ['Vue.js', 'React', 'JavaScript', 'SCSS'],
+      'Performed UI slicing and customization for Odoo modules that lacked a built-in frontend. Developed new web-based features using Bootstrap framework for responsive UI design.Collaborated with functional and backend teams to ensure ERP system compatibility and smooth integration.',
+    technologies: ['Odoo', 'JQuery', 'JavaScript', 'SCSS', 'Bootstrap'],
   },
   {
     id: '3',
-    title: 'Junior Web Developer',
-    company: 'StartUp Co.',
+    title: 'Full Stack Developer | Intern',
+    company: 'Kominfo Kota Padang',
     period: '2020 - 2021',
     description:
-      'Contributed to the development of company website and web applications. Learned and applied best practices for HTML, CSS, and JavaScript.',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
+      'Developed administrative dashboards utilizing HTML, CSS, and JavaScript for internal operational use. Designed database structures and implemented CRUD functionality with PHP (Laravel) and MySQL. Took initiative to independently execute development tasks while actively collaborating with the supervisor to ensure alignment with project specifications.',
+    technologies: ['Laravel', 'HTML', 'CSS', 'JavaScript', 'Bootstrap'],
   },
 ]
 
@@ -107,7 +117,6 @@ export const skillCategories: SkillCategory[] = [
       { name: 'React', proficiency: 'expert' },
       { name: 'Vue.js', proficiency: 'expert' },
       { name: 'Next.js', proficiency: 'expert' },
-      { name: 'TypeScript', proficiency: 'expert' },
     ],
   },
   {
@@ -116,6 +125,8 @@ export const skillCategories: SkillCategory[] = [
       { name: 'Tailwind CSS', proficiency: 'expert' },
       { name: 'CSS/SCSS', proficiency: 'expert' },
       { name: 'Material-UI', proficiency: 'expert' },
+      { name: 'Shadcn UI', proficiency: 'expert' },
+      { name: 'Bootstrap', proficiency: 'expert' },
       { name: 'Responsive Design', proficiency: 'expert' },
     ],
   },
@@ -123,9 +134,11 @@ export const skillCategories: SkillCategory[] = [
     category: 'Tools & Libraries',
     skills: [
       { name: 'Git', proficiency: 'expert' },
-      { name: 'Redux', proficiency: 'expert' },
-      { name: 'React Query', proficiency: 'expert' },
+      { name: 'RTK Query', proficiency: 'expert' },
+      { name: 'Tanstack Query', proficiency: 'expert' },
       { name: 'Jest', proficiency: 'expert' },
+      { name: 'Vuex', proficiency: 'expert' },
+      { name: 'Axios', proficiency: 'expert' },
     ],
   },
   {
