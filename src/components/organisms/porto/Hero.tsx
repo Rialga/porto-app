@@ -11,7 +11,7 @@ export default function Hero() {
         {/* Content */}
         <div className="space-y-6">
           <div>
-            <p className="text-accent font-semibold mb-2">Welcome !</p>
+            <p className="text-accent font-semibold mb-2">Hi! I'm Gani</p>
             <Heading level={1}>Frontend Developer & Creative Problem Solver</Heading>
           </div>
 
@@ -22,11 +22,13 @@ export default function Hero() {
           </Text>
 
           <div className="flex flex-wrap gap-4">
-            <Button 
-              variant="primary" 
-              size="lg" 
+            <Button
+              variant="primary"
+              size="lg"
               className="cursor-pointer"
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() =>
+                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+              }
             >
               View My Work
               <ArrowRight size={20} className="ml-2" />
@@ -37,7 +39,7 @@ export default function Hero() {
               className="cursor-pointer"
               onClick={() =>
                 window.open(
-                  'https://drive.google.com/file/d/1oQ7FFsP70eBKDQQ2j46ThulwgjefFBvw/view?usp=drive_link',
+                  'https://drive.google.com/file/d/1v9HEnHGvBXuKZyT7zgOs7vFkD888ovfW/view?usp=sharing',
                   '_blank'
                 )
               }
@@ -49,7 +51,11 @@ export default function Hero() {
           {/* Social Links */}
           <div className="flex flex-wrap gap-6 pt-6">
             <SocialLink type="github" href="https://github.com/Rialga/" label="GitHub" />
-            <SocialLink type="linkedin" href="https://www.linkedin.com/in/muhamad-febri-algani-311533205/" label="LinkedIn" />
+            <SocialLink
+              type="linkedin"
+              href="https://www.linkedin.com/in/muhamad-febri-algani-311533205/"
+              label="LinkedIn"
+            />
             <SocialLink type="email" href="mailto:febrialganios@gmail.com" label="Email" />
           </div>
         </div>
@@ -59,9 +65,20 @@ export default function Hero() {
           <div className="w-64 h-64 md:w-80 md:h-80 rounded-lg overflow-hidden border-4 border-accent/20 shadow-lg">
             <div className="w-full h-full bg-linear-to-br from-accent/10 to-secondary flex items-center justify-center">
               <img
-                src={Profile}
+                src="https://lh3.googleusercontent.com/d/1sYmtmCFuvH9BjoMmYpcbV_4mqJ4mSkft"
                 alt="Portfolio avatar"
                 className="w-full h-full object-cover p-4 border rounded-xl"
+                loading="lazy"
+                referrerPolicy="no-referrer"
+                onError={e => {
+                  if (!e.currentTarget.dataset.fallback) {
+                    e.currentTarget.dataset.fallback = '1'
+                    e.currentTarget.src =
+                      'https://lh3.googleusercontent.com/d/1sYmtmCFuvH9BjoMmYpcbV_4mqJ4mSkft' // retry sekali
+                  } else {
+                    e.currentTarget.src = '/code-icon-png-0.png'
+                  }
+                }}
               />
             </div>
           </div>

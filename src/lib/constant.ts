@@ -19,7 +19,7 @@ export const projects: Project[] = [
     subtitle: 'Web Back Office Portal for POS Ecosystem',
     description:
       'Centralized Web Back Office Portal for POS ecosystem. Features include Master Data Management, transaction dashboard, and business reporting module for monitoring operational health and sales performance.',
-    image: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=500&h=300&fit=crop',
+    image: 'https://lh3.googleusercontent.com/d/19nhIfbB5jSppZH6Otcagd_XSJRrrEHa1',
     technologies: ['Vue', 'Vuex', 'Axios', 'Tanstack Query' ,'Bootstrap'],
     liveUrl: '',
     githubUrl: '',
@@ -31,7 +31,7 @@ export const projects: Project[] = [
     subtitle: 'Merchant Onboarding Platform',
     description:
       'Landing page and merchant self-onboarding platform with responsive registration workflow and mobile webview optimization for Android integration.',
-    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=300&fit=crop',
+    image: 'https://lh3.googleusercontent.com/d/1YzGa-nOBtRTxVfjddC6MshQQWtKtTNyz',
     technologies: ['Vue', 'Vite', 'Tanstack Query', 'Vue Shadcn', 'Tailwind', 'Vuex'],
     liveUrl: '',
     githubUrl: '',
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     subtitle: 'Field Service Management',
     description:
       'Web-based FSM platform with ticketing module and real-time performance dashboard to monitor SLA, response time, and ticket resolution rates.',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=500&h=300&fit=crop',
+    image: 'https://lh3.googleusercontent.com/d/1j_yENwIrPY6vzrZsr0Vda7aXhOhntkxi',
     technologies: ['Vue', 'Vuex', 'Bootstrap'],
     liveUrl: '',
     githubUrl: '',
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     subtitle: 'Sales & Operations Management',
     description:
       'Mobile-first FSM platform for sales visit management, ticketing & dispatching integration, and admin reporting dashboard.',
-    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=500&h=300&fit=crop',
+    image: 'https://lh3.googleusercontent.com/d/1Y60_aWIqSehukmFKBpck2p-O4ZsXcO-i',
     technologies: ['ReactJS', 'Vite', 'Storybook', 'Redux Toolkit', 'Tailwind'],
     liveUrl: '',
     githubUrl: '',
@@ -64,7 +64,7 @@ export const projects: Project[] = [
     subtitle: 'HR Information System',
     description:
       'HRIS application for managing employee attendance and finance to streamline HR and Finance operations.',
-    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=500&h=300&fit=crop',
+    image: 'https://lh3.googleusercontent.com/d/1zQNkUCIrXfOg-Wi7QnqviPTsyQsXK2pm',
     technologies: ['Laravel', 'jQuery', 'AJAX', 'Bootstrap'],
     liveUrl: '',
     githubUrl: '',
@@ -75,7 +75,7 @@ export const projects: Project[] = [
     subtitle: 'HRIS Revamp',
     description:
       'Re-engineered HRIS from Laravel to ReactJS for better performance, scalability, and modern user experience.',
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&h=300&fit=crop',
+    image: 'https://lh3.googleusercontent.com/d/1kuWCmmL8N-NscE_TkQKKfR3PHEmO9kMN',
     technologies: ['ReactJS', 'Vite', 'Storybook', 'Redux Toolkit', 'Tailwind'],
     liveUrl: '',
     githubUrl: '',
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     subtitle: 'Progressive Web App',
     description:
       'Progressive Web App for tracking cashier rewards and managing reward points with seamless user experience.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop',
+    image: 'https://lh3.googleusercontent.com/d/1vg22sMaF66EUVz8UZOiVSgNLlfJX9AiL',
     technologies: ['ReactJS', 'Vite', 'Storybook', 'Redux Toolkit', 'Tailwind'],
     liveUrl: '',
     githubUrl: '',
@@ -97,7 +97,7 @@ export const projects: Project[] = [
     subtitle: 'Student Enrollment System',
     description:
       'Student enrollment system to enhance user experience and data accuracy in registration process.',
-    image: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=500&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1594904351111-a072f80b1a71?w=500&h=300&fit=crop',
     technologies: ['Odoo ERP', 'jQuery', 'AJAX', 'Bootstrap'],
     liveUrl: '',
     githubUrl: '',
@@ -107,7 +107,7 @@ export const projects: Project[] = [
     title: 'Donation Platform',
     subtitle: 'Donation Management System',
     description: 'Web platform to facilitate and manage donations with user-friendly interface.',
-    image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=500&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1594904351111-a072f80b1a71?w=500&h=300&fit=crop',
     technologies: ['Odoo ERP', 'jQuery', 'AJAX', 'Bootstrap'],
     liveUrl: '',
     githubUrl: '',
@@ -118,7 +118,7 @@ export const projects: Project[] = [
     subtitle: 'Library Management System',
     description:
       'Library management system with cataloging, borrowing, and return tracking features.',
-    image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=500&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1594904351111-a072f80b1a71?w=500&h=300&fit=crop',
     technologies: ['Laravel', 'Bootstrap'],
     liveUrl: '',
     githubUrl: '',

@@ -36,7 +36,17 @@ export default function ProjectCard({
           <img
             src={image || '/placeholder.svg'}
             alt={title}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+            className={`w-full h-full  ${featured ? 'object-cover' : 'object-fit'} transition-transform duration-300 group-hover:scale-105`}
+            referrerPolicy="no-referrer"
+            onError={e => {
+              if (!e.currentTarget.dataset.fallback) {
+                e.currentTarget.dataset.fallback = '1'
+                e.currentTarget.src = image // retry sekali
+              } else {
+                e.currentTarget.src = '/code-icon-png-0.png'
+              }
+            }}
           />
         </div>
       )}
