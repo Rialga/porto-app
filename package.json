@@ -1,6 +1,7 @@
 {
   "name": "porto-app",
   "private": true,
+  "homepage": "https://rialga.github.io/porto-app",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
