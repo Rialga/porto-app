@@ -38,7 +38,7 @@ export default function Hero() {
               className="cursor-pointer"
               onClick={() =>
                 window.open(
-                  'https://bit.ly/gani-resume',
+                  'https://s.id/resume-drive',
                   '_blank'
                 )
               }
