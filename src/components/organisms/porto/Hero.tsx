@@ -38,7 +38,7 @@ export default function Hero() {
               className="cursor-pointer"
               onClick={() =>
                 window.open(
-                  'https://drive.google.com/file/d/1v9HEnHGvBXuKZyT7zgOs7vFkD888ovfW/view?usp=sharing',
+                  'https://bit.ly/gani-resume',
                   '_blank'
                 )
               }
