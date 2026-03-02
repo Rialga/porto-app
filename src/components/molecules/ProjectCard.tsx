@@ -26,18 +26,16 @@ export default function ProjectCard({
   featured = false,
 }: ProjectCardProps) {
   return (
-    <div
-      className={`group rounded-lg  border border-border overflow-hidden transition-all duration-300 hover:border-accent hover:shadow-lg ${
-        featured ? 'md:col-span-2' : ''
-      }`}
-    >
+    <div className="group rounded-lg  border border-border overflow-hidden transition-all duration-300 hover:border-accent hover:shadow-lg ">
       {image && (
         <div className="relative h-48 md:h-56 overflow-hidden bg-secondary">
           <img
             src={image || '/placeholder.svg'}
             alt={title}
             loading="lazy"
-            className={`w-full h-full  ${featured ? 'object-cover' : 'object-fit'} transition-transform duration-300 group-hover:scale-105`}
+            className={`w-full h-full transition-transform duration-300 group-hover:scale-105 ${
+              featured ? 'object-cover' : 'object-fit sm:object-cover'
+            }`}
             referrerPolicy="no-referrer"
             onError={e => {
               if (!e.currentTarget.dataset.fallback) {
