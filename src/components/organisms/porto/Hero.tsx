@@ -40,7 +40,7 @@ export default function Hero() {
                 variant="outline"
                 size="lg"
                 className="cursor-pointer"
-                onClick={() => window.open('https://s.id/resume-drive', '_blank')}
+                onClick={() => window.open('https://s.id/cv-gani', '_blank')}
               >
                 Download CV
               </Button>
