@@ -1,39 +1,29 @@
-import React from "react"
+import { type ReactNode } from 'react'
 import { cn } from '@/lib/utils'
-import SwapText from './SwapText'
 
 interface HeadingProps {
-  level: 1 | 2 | 3 | 4 | 5 | 6
-  children: React.ReactNode
+  level?: 1 | 2 | 3 | 4 | 5 | 6
+  children: ReactNode
   className?: string
-  /**
-   * Optional alternate text that fades in once the heading enters the viewport.
-   * Useful for swap-state section titles like MetaMask's "before/after" headings.
-   */
-  revealAs?: React.ReactNode
+  id?: string
 }
 
-export default function Heading({ level, children, className = '', revealAs }: HeadingProps) {
-  const levelStyles = {
-    1: 'text-4xl md:text-5xl font-bold',
-    2: 'text-3xl md:text-4xl font-bold',
-    3: 'text-2xl md:text-3xl font-bold',
-    4: 'text-xl md:text-2xl font-bold',
-    5: 'text-lg md:text-xl font-semibold',
-    6: 'text-base md:text-lg font-semibold',
-  }
+const sizeClass: Record<NonNullable<HeadingProps['level']>, string> = {
+  1: 'display-1',
+  2: 'display-2',
+  3: 'text-2xl md:text-3xl font-semibold leading-tight',
+  4: 'text-xl md:text-2xl font-semibold leading-snug',
+  5: 'text-lg md:text-xl font-semibold',
+  6: 'text-base md:text-lg font-semibold',
+}
 
-  const Element = `h${level}` as const
-
-  const inner = revealAs ? (
-    <SwapText revealAs={revealAs}>{children}</SwapText>
-  ) : (
-    children
-  )
-
+export const Heading = ({ level = 2, children, className, id }: HeadingProps) => {
+  const Tag = `h${level}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   return (
-    <Element className={cn('text-foreground', levelStyles[level], className)}>
-      {inner}
-    </Element>
+    <Tag id={id} className={cn('text-foreground tracking-tight', sizeClass[level], className)}>
+      {children}
+    </Tag>
   )
 }
+
+export default Heading

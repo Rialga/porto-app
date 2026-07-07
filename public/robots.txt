@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rialga.github.io/porto-app/sitemap.xml

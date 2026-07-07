@@ -1,8 +1,5 @@
-export { default as Badge } from './Badge'
-export { default as Button } from './Button'
-export { default as Heading } from './Heading'
+export { default as Heading, Heading as HeadingRaw } from './Heading'
 export { default as Text } from './Text'
 export { default as MotionReveal } from './MotionReveal'
-export { default as ScrollSection } from './ScrollSection'
-export { default as SwapText } from './SwapText'
-export { default as StatCounter } from './StatCounter'
+// LiveMetrics is lazy-loaded — import via the component file directly.
+export { default as LiveMetrics } from './LiveMetrics'

@@ -1,64 +1,105 @@
-import { useRef } from 'react'
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
-import { Heading, Text, MotionReveal } from '@/components/atoms'
-import ProjectCard from '@/components/molecules/ProjectCard'
-import { projects } from '@/lib/constant'
+import { useMemo, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { projects, projectCategories, type ProjectCategory } from '@/content/projects'
+import { SectionHeading } from '@/components/ui'
+import { MotionReveal } from '@/components/atoms'
+import { ProjectTile } from '@/components/molecules'
+import { cn } from '@/lib/utils'
 
-export default function ProjectsSection() {
-  const sectionRef = useRef<HTMLElement | null>(null)
+const EASE = [0.16, 1, 0.3, 1] as const
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  })
-  const smooth = useSpring(scrollYProgress, { stiffness: 80, damping: 24, mass: 0.4 })
+export const ProjectsSection = () => {
+  const [category, setCategory] = useState<ProjectCategory>('all')
 
-  // Subtle parallax + scale on the section as it enters & exits
-  const sectionY = useTransform(smooth, [0, 0.3, 0.7, 1], [60, 0, 0, -60])
-  const sectionScale = useTransform(smooth, [0, 0.3, 0.7, 1], [0.96, 1, 1, 0.98])
+  const filtered = useMemo(
+    () => (category === 'all' ? projects : projects.filter(p => p.category === category)),
+    [category],
+  )
 
   return (
-    <section
-      ref={sectionRef}
-      id="projects"
-      className="section bg-secondary/30 rounded-2xl relative overflow-hidden"
-    >
-      <motion.div
-        className="container relative"
-        style={{ y: sectionY, scale: sectionScale }}
-      >
-        {/* Decorative concentric ring behind the heading */}
-        <div aria-hidden className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[28rem] h-[28rem] opacity-30 hidden md:block">
-          <svg viewBox="0 0 200 200" className="w-full h-full">
-            <circle cx="100" cy="100" r="92" fill="none" stroke="#2F5D62" strokeOpacity="0.15" strokeWidth="1" />
-            <circle cx="100" cy="100" r="74" fill="none" stroke="#2F5D62" strokeOpacity="0.1" strokeWidth="1" />
-            <circle cx="100" cy="100" r="56" fill="none" stroke="#2F5D62" strokeOpacity="0.06" strokeWidth="1" />
-          </svg>
-        </div>
+    <section id="work" aria-labelledby="work-title" className="section">
+      <div className="container">
+        <SectionHeading
+          eyebrow="Selected work"
+          title={
+            <span id="work-title">A gallery of the things I’ve shipped.</span>
+          }
+          lede="The projects I built or owned end-to-end. Featured tiles open into full case studies; the rest are clickable to live demos or repos."
+        />
 
-        <MotionReveal direction="up">
-          <div className="text-center mb-12 relative">
-            <Heading level={2}>Featured Projects</Heading>
-            <Text size="lg" color="muted" className="mt-4 max-w-2xl mx-auto">
-              A showcase of my recent work and technical expertise across various technologies and
-              project types.
-            </Text>
+        {/* Filter chips — desktop only. Mobile shows all projects; recruiters
+            view on desktop anyway and the chips cost vertical space on phones. */}
+        <MotionReveal
+          as="div"
+          direction="up"
+          delay={0.1}
+          className="mt-10 hidden md:block"
+        >
+          <div
+            role="tablist"
+            aria-label="Filter projects by category"
+            className="flex flex-wrap gap-2"
+          >
+            {projectCategories.map(cat => {
+              const active = category === cat.id
+              return (
+                <button
+                  key={cat.id}
+                  role="tab"
+                  aria-selected={active}
+                  type="button"
+                  onClick={() => setCategory(cat.id as ProjectCategory)}
+                  className={cn(
+                    'relative inline-flex h-9 items-center gap-2 rounded-full border px-4 text-sm transition-colors duration-200',
+                    active
+                      ? 'border-foreground/40 bg-foreground text-background'
+                      : 'border-border bg-surface text-muted hover:text-foreground hover:border-foreground/30',
+                  )}
+                >
+                  {cat.label}
+                  <span
+                    aria-hidden
+                    className={cn(
+                      'inline-flex size-5 items-center justify-center rounded-full text-[10px] font-mono tabular-nums',
+                      active
+                        ? 'bg-background/20 text-background'
+                        : 'bg-surface-2 text-muted',
+                    )}
+                  >
+                    {cat.id === 'all'
+                      ? projects.length
+                      : projects.filter(p => p.category === cat.id).length}
+                  </span>
+                </button>
+              )
+            })}
           </div>
         </MotionReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <MotionReveal
-              key={project.id}
-              direction="up"
-              delay={0.08 * (index + 1)}
-              className={project.featured ? 'md:col-span-2 lg:col-span-2' : ''}
+        {/* Grid — uniform 3-col on lg, 2-col on sm, 1-col on mobile */}
+        <div className="mt-10">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={category}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.35, ease: EASE }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
             >
-              <ProjectCard {...project} />
-            </MotionReveal>
-          ))}
+              {filtered.map((project, i) => (
+                <ProjectTile key={project.id} project={project} index={i + 1} />
+              ))}
+            </motion.div>
+          </AnimatePresence>
+
+          {filtered.length === 0 && (
+            <p className="py-16 text-center text-muted">No projects in this category yet.</p>
+          )}
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }
+
+export default ProjectsSection

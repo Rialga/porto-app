@@ -1,10 +1,86 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="png" href="/code-icon-png-0.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Muhamad Febri Algani | Portfolio</title>
+    <link rel="icon" type="image/png" href="/code-icon-png-0.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
+
+    <!-- Preconnect to the avatar CDN so the portrait request starts early. -->
+    <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin />
+    <link rel="dns-prefetch" href="https://lh3.googleusercontent.com" />
+
+    <title>Muhamad Febri Algani — Senior Frontend Engineer</title>
+    <meta
+      name="description"
+      content="Senior Frontend Engineer building calm, fast, accessible web products with React, TypeScript and a relentless focus on craft."
+    />
+    <meta name="author" content="Muhamad Febri Algani" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://rialga.github.io/porto-app/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Muhamad Febri Algani — Senior Frontend Engineer" />
+    <meta
+      property="og:description"
+      content="Senior Frontend Engineer building calm, fast, accessible web products with React, TypeScript and a relentless focus on craft."
+    />
+    <meta property="og:url" content="https://rialga.github.io/porto-app/" />
+    <meta property="og:image" content="https://rialga.github.io/porto-app/og-cover.png" />
+    <meta property="og:site_name" content="Muhamad Febri Algani" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Muhamad Febri Algani — Senior Frontend Engineer" />
+    <meta
+      name="twitter:description"
+      content="Senior Frontend Engineer building calm, fast, accessible web products with React, TypeScript and a relentless focus on craft."
+    />
+    <meta name="twitter:image" content="https://rialga.github.io/porto-app/og-cover.png" />
+
+    <!-- Pre-paint theme bootstrap to avoid FOUC. Reads localStorage first, then OS preference. -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var mode = stored || (prefersDark ? 'dark' : 'light');
+          var root = document.documentElement;
+          root.classList.remove('dark', 'light');
+          root.classList.add(mode);
+          root.style.colorScheme = mode;
+        } catch (e) {
+          /* ignore — root falls back to initial class */
+        }
+      })();
+    </script>
+
+    <!-- JSON-LD: Person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Muhamad Febri Algani",
+        "url": "https://rialga.github.io/porto-app/",
+        "jobTitle": "Senior Frontend Engineer",
+        "sameAs": [
+          "https://github.com/Rialga",
+          "https://www.linkedin.com/in/muhamad-febri-algani-311533205/"
+        ],
+        "knowsAbout": [
+          "React",
+          "TypeScript",
+          "Vue.js",
+          "Next.js",
+          "Frontend Engineering",
+          "UI Engineering",
+          "Web Performance"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

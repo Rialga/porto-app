@@ -1,73 +1,112 @@
-/* eslint-disable react-refresh/only-export-components */
-import * as React from 'react'
-import { Slot } from '@radix-ui/react-slot'
+import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { Slot } from '@radix-ui/react-slot'
 import { cn } from '@/lib/utils'
-import { LoaderCircle } from 'lucide-react'
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold transition-[color,box-shadow] disabled:border-[0px] disabled:cursor-not-allowed disabled:bg-light-2 disabled:text-gray-1 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  [
+    'inline-flex items-center justify-center gap-2 whitespace-nowrap',
+    'font-medium tracking-tight',
+    'transition-[transform,background-color,border-color,color,box-shadow] duration-200 ease-out',
+    'disabled:pointer-events-none disabled:opacity-50',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+    '[&_svg]:shrink-0',
+  ].join(' '),
   {
     variants: {
       variant: {
         primary:
-          'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 disabled:bg-light-2 disabled:opacity-100 disabled:text-gray-1',
-        'primary-flat':
-          'bg-primary-100 text-primary shadow-xs hover:bg-primary hover:text-white focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40',
-        destructive:
-          'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40',
-        'danger-flat':
-          'bg-danger-100 text-danger shadow-xs hover:bg-danger hover:text-white focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40',
-        danger:
-          'bg-danger text-white shadow-xs hover:bg-danger/90 focus-visible:ring-danger/20 dark:focus-visible:ring-danger/40 disabled:bg-[var(--color-light-2)] disabled:text-[var(--color-gray-1)] disabled:opacity-100 ',
+          'bg-foreground text-background hover:bg-foreground/90 hover:-translate-y-0.5 active:translate-y-0 shadow-[var(--shadow-sm)]',
+        accent:
+          'bg-accent text-accent-foreground hover:bg-accent/90 hover:-translate-y-0.5 active:translate-y-0 shadow-[0_8px_24px_-12px_var(--accent-glow)]',
         outline:
-          'border border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground',
-        secondary: 'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',
-        ghost: 'hover:bg-secondary hover:text-black',
-        link: 'text-primary underline-offset-4 hover:underline',
+          'border border-border-strong bg-transparent text-foreground hover:bg-surface-2 hover:border-foreground/30',
+        ghost: 'bg-transparent text-foreground hover:bg-surface-2',
+        secondary: 'bg-surface-2 text-foreground hover:bg-surface-3',
       },
       size: {
-        default: 'px-4 py-2 has-[>svg]:px-3',
-        sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',
-        md: 'min-h-[52px] h-[52px] px-[16px] py-[12px] has-[>svg]:px-4 min-w-[128px]',
-        'toolbar-md': 'h-[44px] px-[16px] py-[12px] has-[>svg]:px-4',
-        lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',
-        icon: 'size-8',
+        sm: 'h-9 px-3.5 text-sm rounded-lg [&_svg]:size-3.5',
+        md: 'h-11 px-5 text-sm rounded-xl [&_svg]:size-4',
+        lg: 'h-12 px-6 text-base rounded-xl [&_svg]:size-4',
+        icon: 'size-10 rounded-xl [&_svg]:size-4',
       },
     },
     defaultVariants: {
       variant: 'primary',
-      size: 'default',
+      size: 'md',
     },
-  }
+  },
 )
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
   asChild?: boolean
-  isLoading?: boolean
+  /** Renders an arrow that nudges right on hover. */
+  withArrow?: boolean
+  leadingIcon?: ReactNode
+  trailingIcon?: ReactNode
 }
 
-function Button({
-  className = '',
-  variant = 'primary',
-  size = 'default',
-  asChild = false,
-  isLoading = false,
-  children = null,
-  ...props
-}: ButtonProps) {
-  const Comp = asChild ? Slot : 'button'
-  return (
-    <Comp
-      data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }), 'cursor-pointer')}
-      {...props}
-      disabled={props.disabled || isLoading}
-    >
-      {isLoading ? <LoaderCircle className="animate-spin" /> : children}
-    </Comp>
-  )
-}
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      className,
+      variant,
+      size,
+      asChild,
+      withArrow,
+      leadingIcon,
+      trailingIcon,
+      children,
+      type,
+      ...props
+    },
+    ref,
+  ) => {
+    const Comp = asChild ? Slot : 'button'
 
-export { Button, buttonVariants }
+    // Slot requires a single React element child. When asChild is true we
+    // collapse the inner spans into the children themselves.
+    if (asChild) {
+      return (
+        <Comp ref={ref as any} className={cn(buttonVariants({ variant, size, className }))} {...props}>
+          {children}
+        </Comp>
+      )
+    }
+
+    return (
+      <Comp
+        ref={ref as any}
+        type={type ?? 'button'}
+        className={cn(buttonVariants({ variant, size, className }))}
+        {...props}
+      >
+        {leadingIcon}
+        <span>{children}</span>
+        {(withArrow || trailingIcon) && (
+          <span
+            className="inline-flex transition-transform duration-300 ease-out group-hover:translate-x-1"
+            aria-hidden
+          >
+            {trailingIcon ?? (
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path
+                  d="M1 7h12m0 0L7.5 1.5M13 7l-5.5 5.5"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            )}
+          </span>
+        )}
+      </Comp>
+    )
+  },
+)
+Button.displayName = 'Button'
+
+export { buttonVariants }

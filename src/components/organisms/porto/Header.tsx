@@ -1,59 +1,71 @@
-'use client'
+import { useEffect, useId, useRef, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion'
+import { Menu, X, ArrowUpRight } from 'lucide-react'
+import { cn } from '@/lib/utils'
+import { site } from '@/content/site'
+import { ThemeToggle } from '@/components/ui'
+import { useScrollDirection } from '@/hooks/useScrollDirection'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 
-import { useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion, useScroll, useMotionValueEvent } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
-import Heading from '@/components/atoms/Heading'
-import Icon from '../../../../public/code-icon-png-0.png'
+type NavItem =
+  | { kind: 'anchor'; id: string; label: string; href: string }
+  | { kind: 'route'; label: string; href: string; match: (path: string) => boolean }
 
-const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Skills', href: '#skills' },
+const NAV_ITEMS: NavItem[] = [
+  { kind: 'anchor', id: 'home', label: 'Home', href: '/#home' },
+  { kind: 'anchor', id: 'about', label: 'About', href: '/#about' },
+  { kind: 'anchor', id: 'work', label: 'Work', href: '/#work' },
+  { kind: 'anchor', id: 'process', label: 'Case studies', href: '/#process' },
+  { kind: 'anchor', id: 'contact', label: 'Contact', href: '/#contact' },
 ]
 
-export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [hidden, setHidden] = useState(false)
-  const [activeHref, setActiveHref] = useState<string>('#home')
-  const lastY = useRef(0)
-
+export const Header = () => {
+  const [open, setOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState<string>('home')
+  const dir = useScrollDirection({ threshold: 8 })
+  const isDesktop = useMediaQuery('(min-width: 768px)')
   const { scrollY } = useScroll()
+  const [condensed, setCondensed] = useState(false)
+  const location = useLocation()
+  const drawerId = useId()
+  const triggerRef = useRef<HTMLButtonElement | null>(null)
 
-  // Hide on scroll down, show on scroll up
-  useMotionValueEvent(scrollY, 'change', y => {
-    const diff = y - lastY.current
-    if (Math.abs(diff) < 4) return
-    if (y > 80 && diff > 0) {
-      setHidden(true)
-    } else {
-      setHidden(false)
-    }
-    lastY.current = y
+  // Condensed state once we've scrolled past the hero.
+  useMotionValueEvent(scrollY, 'change', latest => {
+    setCondensed(latest > 32)
   })
 
-  // Track which section is in view to drive active-link underline
+  // Close drawer on route change.
   useEffect(() => {
-    const ids = navLinks.map(l => l.href.replace('#', ''))
-    const observers: IntersectionObserver[] = []
-    const visible = new Set<string>()
+    setOpen(false)
+  }, [location.pathname])
 
-    ids.forEach(id => {
+  // Track the active in-page section via IntersectionObserver.
+  // Only run on the home route — on subroutes, no section is "active" and
+  // route-based nav items get aria-current="page" instead.
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      setActiveSection('')
+      return
+    }
+    const anchorIds = NAV_ITEMS.filter(
+      (n): n is Extract<NavItem, { kind: 'anchor' }> => n.kind === 'anchor',
+    ).map(n => n.id)
+    const visible = new Set<string>()
+    const observers: IntersectionObserver[] = []
+
+    anchorIds.forEach(id => {
       const el = document.getElementById(id)
       if (!el) return
       const obs = new IntersectionObserver(
         entries => {
           entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              visible.add(id)
-            } else {
-              visible.delete(id)
-            }
+            if (entry.isIntersecting) visible.add(id)
+            else visible.delete(id)
           })
-          // pick the topmost visible
-          const topmost = ids.find(i => visible.has(i))
-          if (topmost) setActiveHref('#' + topmost)
+          const topmost = anchorIds.find(i => visible.has(i))
+          if (topmost) setActiveSection(topmost)
         },
         { rootMargin: '-40% 0px -50% 0px', threshold: 0 },
       )
@@ -62,80 +74,212 @@ export default function Header() {
     })
 
     return () => observers.forEach(o => o.disconnect())
-  }, [])
+  }, [location.pathname])
+
+  // Focus trap + Esc handler for the mobile drawer.
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setOpen(false)
+        triggerRef.current?.focus()
+      }
+    }
+    document.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [open])
+
+  const hidden = dir === 'down' && condensed && !open && isDesktop
 
   return (
-    <motion.header
-      variants={{
-        visible: { y: 0, opacity: 1 },
-        hidden: { y: '-100%', opacity: 0 },
-      }}
-      animate={hidden ? 'hidden' : 'visible'}
-      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border"
-    >
-      <nav className="container flex items-center justify-between h-16">
-        <Heading level={3} className="text-xl! md:text-2xl!">
-          <img src={Icon} alt="Logo" className="w-8 h-8 inline-block mr-2 -mt-1" />
-        </Heading>
-
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8 relative">
-          {navLinks.map(link => {
-            const isActive = activeHref === link.href
-            return (
-              <a
-                key={link.label}
-                href={link.href}
-                className="relative text-sm text-foreground hover:text-accent transition-colors duration-200 py-1"
-              >
-                {link.label}
-                {isActive && (
-                  <motion.span
-                    layoutId="nav-underline"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent rounded-full"
-                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                  />
-                )}
-              </a>
-            )
-          })}
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </nav>
-
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden border-t border-border bg-background overflow-hidden"
+    <>
+      <motion.header
+        initial={false}
+        animate={{
+          y: hidden ? '-100%' : '0%',
+        }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        className={cn(
+          'fixed inset-x-0 top-0 z-50',
+          'transition-[background-color,border-color,backdrop-filter,padding] duration-300',
+          condensed
+            ? 'bg-background/70 backdrop-blur-xl border-b border-border/60'
+            : 'bg-transparent border-b border-transparent',
+        )}
+      >
+        <div className="container flex items-center justify-between h-16 md:h-[68px]">
+          {/* Logo */}
+          <Link
+            to="/"
+            className="group inline-flex items-center gap-2 font-semibold tracking-tight text-foreground"
+            aria-label={`${site.name} — Home`}
           >
-            <div className="container py-4 flex flex-col gap-4">
-              {navLinks.map(link => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="text-foreground hover:text-accent transition-colors duration-200"
-                  onClick={() => setIsMenuOpen(false)}
+            <span className="relative flex size-7 items-center justify-center rounded-lg bg-foreground text-background text-xs font-bold">
+              {site.shortName.charAt(0)}
+              <span
+                aria-hidden
+                className="absolute inset-0 rounded-lg ring-1 ring-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              />
+            </span>
+            <span className="hidden sm:inline text-sm md:text-base">{site.shortName}</span>
+          </Link>
+
+          {/* Desktop nav */}
+          <nav
+            aria-label="Primary"
+            className="hidden md:flex items-center gap-1 relative"
+          >
+            {NAV_ITEMS.map(item => {
+              const isActive =
+                item.kind === 'anchor'
+                  ? activeSection === item.id
+                  : item.match(location.pathname)
+              return (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className={cn(
+                    'relative px-3.5 py-2 text-sm rounded-full transition-colors duration-200',
+                    isActive ? 'text-foreground' : 'text-muted hover:text-foreground',
+                  )}
+                  aria-current={isActive ? 'page' : undefined}
                 >
-                  {link.label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-active"
+                      className="absolute inset-0 rounded-full bg-surface-2 border border-border"
+                      transition={{ type: 'spring', stiffness: 320, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative">{item.label}</span>
+                </Link>
+              )
+            })}
+          </nav>
+
+          {/* Right cluster */}
+          <div className="flex items-center gap-2">
+            <ThemeToggle className="hidden sm:inline-flex" />
+            <a
+              href={site.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:inline-flex h-10 items-center gap-2 rounded-full border border-border-strong px-4 text-sm font-medium text-foreground hover:bg-surface-2 hover:border-foreground/30 transition-colors"
+            >
+              Résumé
+              <ArrowUpRight size={14} aria-hidden />
+            </a>
+            <button
+              ref={triggerRef}
+              type="button"
+              className="md:hidden inline-flex size-10 items-center justify-center rounded-full border border-border bg-surface text-foreground"
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-expanded={open}
+              aria-controls={drawerId}
+              onClick={() => setOpen(o => !o)}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {open ? (
+                  <motion.span
+                    key="x"
+                    initial={{ rotate: -45, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 45, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X size={16} />
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    key="menu"
+                    initial={{ rotate: 45, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -45, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu size={16} />
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </button>
+          </div>
+        </div>
+      </motion.header>
+
+      {/* Mobile drawer */}
+      <AnimatePresence>
+        {open && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-40 bg-background/80 backdrop-blur-sm md:hidden"
+              onClick={() => setOpen(false)}
+              aria-hidden
+            />
+            <motion.div
+              id={drawerId}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Site navigation"
+              initial={{ y: -16, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -8, opacity: 0 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed inset-x-4 top-[68px] z-50 md:hidden rounded-2xl border border-border bg-surface p-4 shadow-[var(--shadow-lg)]"
+            >
+              <nav aria-label="Mobile primary" className="flex flex-col">
+                {NAV_ITEMS.map(item => {
+                  const isActive =
+                    item.kind === 'anchor'
+                      ? activeSection === item.id
+                      : item.match(location.pathname)
+                  return (
+                    <Link
+                      key={item.label}
+                      to={item.href}
+                      onClick={() => setOpen(false)}
+                      aria-current={isActive ? 'page' : undefined}
+                      className={cn(
+                        'flex items-center justify-between px-4 py-3 rounded-xl text-base',
+                        'transition-colors',
+                        isActive
+                          ? 'bg-surface-2 text-foreground'
+                          : 'text-muted hover:bg-surface-2 hover:text-foreground',
+                      )}
+                    >
+                      <span>{item.label}</span>
+                      <ArrowUpRight size={14} aria-hidden />
+                    </Link>
+                  )
+                })}
+                <div className="my-2 h-px bg-border" />
+                <a
+                  href={site.resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between px-4 py-3 rounded-xl text-base text-foreground hover:bg-surface-2"
+                >
+                  Read résumé
+                  <ArrowUpRight size={14} aria-hidden />
                 </a>
-              ))}
-            </div>
-          </motion.div>
+                <div className="flex items-center justify-between px-4 py-3">
+                  <span className="text-sm text-muted">Theme</span>
+                  <ThemeToggle />
+                </div>
+              </nav>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-    </motion.header>
+    </>
   )
 }
+
+export default Header

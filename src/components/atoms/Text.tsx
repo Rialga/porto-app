@@ -1,52 +1,40 @@
-import React from "react"
+import { type ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
+type Variant = 'body' | 'lede' | 'small' | 'mono'
+type Tone = 'default' | 'muted' | 'subtle' | 'accent'
+
 interface TextProps {
-  children: React.ReactNode
-  size?: 'sm' | 'base' | 'lg' | 'xl'
-  weight?: 'normal' | 'medium' | 'semibold' | 'bold'
-  color?: 'default' | 'muted' | 'accent'
+  children: ReactNode
+  variant?: Variant
+  tone?: Tone
+  as?: 'p' | 'span' | 'div'
   className?: string
 }
 
-export default function Text({
-  children,
-  size = 'base',
-  weight = 'normal',
-  color = 'default',
-  className = '',
-}: TextProps) {
-  const sizeStyles = {
-    sm: 'text-sm',
-    base: 'text-base',
-    lg: 'text-lg',
-    xl: 'text-xl',
-  }
-
-  const weightStyles = {
-    normal: 'font-normal',
-    medium: 'font-medium',
-    semibold: 'font-semibold',
-    bold: 'font-bold',
-  }
-
-  const colorStyles = {
-    default: 'text-foreground',
-    muted: 'text-muted-foreground',
-    accent: 'text-accent',
-  }
-
-  return (
-    <p
-      className={cn(
-        'leading-relaxed',
-        sizeStyles[size],
-        weightStyles[weight],
-        colorStyles[color],
-        className,
-      )}
-    >
-      {children}
-    </p>
-  )
+const variantClass: Record<Variant, string> = {
+  body: 'text-base leading-relaxed',
+  lede: 'text-lg md:text-xl leading-relaxed',
+  small: 'text-sm leading-relaxed',
+  mono: 'font-mono text-xs uppercase tracking-[0.18em]',
 }
+
+const toneClass: Record<Tone, string> = {
+  default: 'text-foreground',
+  muted: 'text-muted',
+  subtle: 'text-muted-2',
+  accent: 'text-accent',
+}
+
+export const Text = ({
+  children,
+  variant = 'body',
+  tone = 'default',
+  as = 'p',
+  className,
+}: TextProps) => {
+  const Tag = as
+  return <Tag className={cn(variantClass[variant], toneClass[tone], className)}>{children}</Tag>
+}
+
+export default Text

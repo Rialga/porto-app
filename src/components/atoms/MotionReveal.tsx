@@ -1,5 +1,7 @@
-import { motion, useInView } from 'framer-motion'
-import { useRef, type ReactNode } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
+import { type ReactNode } from 'react'
+import { fadeUp, fadeIn, inViewOnce } from '@/lib/motion'
+import { cn } from '@/lib/utils'
 
 interface MotionRevealProps {
   children: ReactNode
@@ -7,49 +9,72 @@ interface MotionRevealProps {
   delay?: number
   duration?: number
   className?: string
-  once?: boolean
+  /** When the wrapper enters the viewport. */
+  amount?: number
+  /** Re-animates if it scrolls back into view. */
+  repeat?: boolean
+  as?: 'div' | 'section' | 'article' | 'aside' | 'header' | 'footer' | 'li'
 }
 
-const MotionReveal = ({
+const directionMap = {
+  up: { x: 0, y: 24 },
+  down: { x: 0, y: -24 },
+  left: { x: 24, y: 0 },
+  right: { x: -24, y: 0 },
+  none: { x: 0, y: 0 },
+}
+
+/**
+ * Reveals children on enter. With reduced-motion, transforms collapse to a
+ * pure opacity fade so essential content stays accessible.
+ */
+export const MotionReveal = ({
   children,
   direction = 'up',
-  delay = 0.1,
-  duration = 0.4,
-  className = '',
-  once = true,
+  delay = 0,
+  duration,
+  className,
+  amount = 0.2,
+  repeat = false,
+  as = 'div',
 }: MotionRevealProps) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once })
+  const reduced = useReducedMotion()
+  const offset = directionMap[direction]
 
-  const variants = {
-    hidden: {
-      opacity: 0,
-      y: direction === 'up' ? 30 : direction === 'down' ? -30 : 0,
-      x: direction === 'left' ? 30 : direction === 'right' ? -30 : 0,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      x: 0,
-      transition: {
-        duration,
-        delay,
-        ease: [0.25, 0.1, 0.25, 1.0],
-      },
-    },
-  } as any
+  const variants = reduced
+    ? {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { duration: 0.4, delay } },
+      }
+    : {
+        hidden: { opacity: 0, x: offset.x, y: offset.y },
+        visible: {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          transition: {
+            duration: duration ?? 0.7,
+            delay,
+            ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+          },
+        },
+      }
+
+  const MotionTag = motion[as] as typeof motion.div
 
   return (
-    <motion.div
-      ref={ref}
+    <MotionTag
+      className={cn(className)}
       initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
+      whileInView="visible"
+      viewport={repeat ? { amount } : ({ once: true, amount } as any)}
       variants={variants}
-      className={className}
     >
       {children}
-    </motion.div>
+    </MotionTag>
   )
 }
 
+// Re-export the canonical variants in case consumers want them.
+export { fadeUp, fadeIn, inViewOnce }
 export default MotionReveal

@@ -1,77 +1,68 @@
-import { Outlet } from 'react-router-dom'
-import type { ReactNode } from 'react'
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
+import { Outlet, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
+import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
 import Header from '@/components/organisms/porto/Header'
 import Footer from '@/components/organisms/porto/Footer'
+import { NoiseOverlay } from '@/components/ui'
+import { SEO } from '@/components/seo/SEO'
 
-interface WebLayoutProps {
-  children?: ReactNode
+const EASE = [0.16, 1, 0.3, 1] as const
+
+const pageVariants = {
+  initial: { opacity: 0, y: 8 },
+  enter: { opacity: 1, y: 0, transition: { duration: 0.35, ease: EASE } },
+  exit: { opacity: 0, y: -4, transition: { duration: 0.2, ease: EASE } },
 }
 
-export const WebLayout = ({ children }: WebLayoutProps) => {
+export const WebLayout = () => {
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001,
   })
+  const location = useLocation()
 
-  // Traveller position on the winding line
-  const travellerY = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
-  const travellerScale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.4, 1])
+  // Reset scroll to top on route change so the user lands at the top.
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
+  }, [location.pathname])
 
   return (
-    <div className="min-h-screen bg-[#F0EEE9] flex flex-col relative">
-      {/* Scroll progress bar */}
+    <div className="relative min-h-screen bg-background text-foreground flex flex-col">
+      {/* Skip link for keyboard users. */}
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
+
+      <SEO path={location.pathname.replace(/^\//, '')} />
+
+      {/* Top scroll progress. */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1.5 bg-accent origin-left z-100"
+        aria-hidden
+        className="fixed top-0 inset-x-0 h-[2px] origin-left z-[60] bg-accent"
         style={{ scaleX }}
       />
 
-      {/* Section-to-section winding line — fixed left margin, only on lg+ */}
-      <div
-        aria-hidden
-        className="pointer-events-none fixed left-4 top-0 bottom-0 z-30 hidden lg:block"
-      >
-        <svg width="20" height="100%" preserveAspectRatio="none" viewBox="0 0 20 1000" className="h-full">
-          <line
-            x1="10"
-            y1="0"
-            x2="10"
-            y2="1000"
-            stroke="#2F5D62"
-            strokeOpacity="0.18"
-            strokeWidth="1"
-            strokeDasharray="2 6"
-          />
-          <motion.circle
-            cx="10"
-            r="5"
-            fill="#F4A261"
-            style={{ cy: travellerY, scale: travellerScale }}
-          />
-          <motion.circle
-            cx="10"
-            r="10"
-            fill="#F4A261"
-            fillOpacity="0.2"
-            style={{ cy: travellerY, scale: travellerScale }}
-          />
-        </svg>
-      </div>
-
-      {/* Film-grain overlay (CSS-only) */}
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 z-[60] opacity-[0.04] mix-blend-multiply"
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.7'/></svg>\")",
-        }}
-      />
+      {/* Subtle grain overlay — 4% opacity, blend overlay. */}
+      <NoiseOverlay className="fixed inset-0 z-[1] opacity-[0.035]" />
 
       <Header />
-      <main className="flex-1">{children || <Outlet />}</main>
+
+      <main id="main" className="flex-1 relative z-[2] pt-16 md:pt-[68px]">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={location.pathname}
+            variants={pageVariants}
+            initial="initial"
+            animate="enter"
+            exit="exit"
+          >
+            <Outlet />
+          </motion.div>
+        </AnimatePresence>
+      </main>
+
       <Footer />
     </div>
   )
