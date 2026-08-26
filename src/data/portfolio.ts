@@ -10,7 +10,7 @@ export const profile = {
   phone: '+62 857 1812 0287',
   status: 'Open to senior frontend roles',
   tagline:
-    'I build production web apps for internal operations — admin portals, HRIS, and field service tools. 4+ years shipping at PCS Payment Indonesia.',
+    '4+ years of experience building beautiful, responsive web applications with React, Vue.js, and modern web technologies. I specialize in creating user-centered experiences that combine elegant design with robust functionality.',
   intro: [
     'I work mostly inside the messy middle: large existing codebases, internal users who actually need things to work, and stacks that have to hold up under real load.',
     'Most of my time goes into POSe, the operational backbone at PCS Payment Indonesia — back-office admin, merchant onboarding, HRIS, and the field tools our ops team carries into the field every day.',
@@ -18,8 +18,8 @@ export const profile = {
   ],
   beyondCode: [
     {
-      label: 'Mentoring',
-      body: 'Mentored two junior developers over twelve months through weekly 1:1s and structured PR review. Both were promoted to mid-level within a year.',
+      label: 'On Craft',
+      body: 'I write code the way I design interfaces: small, named, predictable. The same component looks the same in every product it ships in. Tokens over magic numbers, primitive APIs that don\'t trap the next person into bad patterns, and a component library I could defend in code review without flinching.',
     },
   ],
   socials: [

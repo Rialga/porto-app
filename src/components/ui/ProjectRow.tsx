@@ -1,21 +1,21 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import type { Project } from '@/data/portfolio';
 import { TechTag } from './TechTag';
-import miniCrm from '@/assets/images/mini-crm.png';
-import sidindang from '@/assets/images/sidindang-mobile.png';
-import simlubeg from '@/assets/images/simlubeg.png';
-import sipdp from '@/assets/images/sipdp.png';
-import laptop from '@/assets/images/laptop.png';
+import posePortal from '@/assets/images/pose-portal.jpg';
+import poseExternal from '@/assets/images/pose-external.jpg';
+import mentor from '@/assets/images/mentor.jpg';
+import tap from '@/assets/images/tap.jpg';
+import reKerjaYuk from '@/assets/images/re-kerja-yuk.jpg';
+import kyLoyalty from '@/assets/images/ky-loyalty.jpg';
 
-/* Map each PCS project to the closest existing screenshot from git history
- * (2021-2023 college + Padang Dinkopdag work). Real artifacts, no mockups. */
+/* Real PCS product screenshots (downloaded from previously-deployed portfolio). */
 const IMAGE_BY_PROJECT: Record<string, string> = {
-  'POSe Portal': miniCrm,
-  'POSe External': sidindang,
-  'MENTOR': simlubeg,
-  'TAP': sipdp,
-  'RE-KerjaYuk!': sipdp,
-  'KY-Loyalty': laptop,
+  'POSe Portal': posePortal,
+  'POSe External': poseExternal,
+  'MENTOR': mentor,
+  'TAP': tap,
+  'RE-KerjaYuk!': reKerjaYuk,
+  'KY-Loyalty': kyLoyalty,
 };
 
 interface ProjectRowProps {
@@ -34,7 +34,7 @@ interface ProjectRowProps {
  */
 export function ProjectRow({ project }: ProjectRowProps) {
   const reduce = useReducedMotion();
-  const src = IMAGE_BY_PROJECT[project.title] ?? laptop;
+  const src = IMAGE_BY_PROJECT[project.title];
 
   return (
     <motion.article
@@ -50,7 +50,7 @@ export function ProjectRow({ project }: ProjectRowProps) {
             alt={`Screenshot of ${project.title}`}
             loading="lazy"
             decoding="async"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-contain"
           />
           {/* Index mark — sits over the screenshot like a stamp */}
           <div className="mono pointer-events-none absolute right-3 top-3 z-10 text-[11px]">
