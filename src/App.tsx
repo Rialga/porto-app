@@ -1,5 +1,5 @@
-import Router from '@/routes'
+import { PageLayout } from '@/components/layout/PageLayout';
 
 export const App = () => {
-  return <Router />
+  return <PageLayout />;
 };
