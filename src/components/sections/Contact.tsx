@@ -7,7 +7,7 @@ export function Contact() {
   return (
     <section id="contact" className="border-t border-[var(--border-soft)] py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
-        <SectionLabel number="04" label="Contact" />
+        <SectionLabel number="05" label="Contact" />
 
         <Reveal>
           <div className="mt-10 grid gap-10 md:grid-cols-12 md:gap-10">

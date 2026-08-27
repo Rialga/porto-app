@@ -33,9 +33,9 @@ export function About() {
             {/* Beyond Code — single highlight, not a marketing list */}
             <Reveal delay={0.18}>
               <div className="mt-10 rounded-md border border-[var(--border)] bg-[var(--surface)] p-6">
-                <div className="mono mb-3 flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-[var(--fg-muted)]">
+                <div className="mono mb-3 flex items-center gap-2 text-[11px] uppercase tracking-[0.16em] text-[var(--fg-muted)]">
                   <span className="text-[var(--accent)]">/</span>
-                  Beyond Code
+                  {profile.beyondCode[0].label}
                 </div>
                 <p className="text-[15px] leading-[1.7] text-[var(--fg)]">
                   {profile.beyondCode[0].body}

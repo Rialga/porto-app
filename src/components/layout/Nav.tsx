@@ -20,7 +20,7 @@ export function Nav() {
       setLastY(y);
 
       // Determine active section
-      const ids = ['about', 'work', 'stack', 'contact'];
+      const ids = ['about', 'experience', 'work', 'stack', 'contact'];
       let current = '';
       for (const id of ids) {
         const el = document.getElementById(id);

@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Claude / tooling state — not part of the app
+.claude/
+.vite/

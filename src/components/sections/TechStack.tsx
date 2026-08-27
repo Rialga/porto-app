@@ -7,7 +7,7 @@ export function TechStack() {
   return (
     <section id="stack" className="border-t border-[var(--border-soft)] py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
-        <SectionLabel number="03" label="Stack" />
+        <SectionLabel number="04" label="Stack" />
 
         <Reveal>
           <div className="mt-10 mb-10 flex flex-wrap items-end justify-between gap-4">
