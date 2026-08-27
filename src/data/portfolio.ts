@@ -67,7 +67,7 @@ export const projects: Project[] = [
       'API touchpoints with the Go middleware',
     ],
     stack: ['TypeScript', 'JavaScript', 'PWA', 'CSS', 'Go'],
-    lead: 'PPOB is PCS\'s payment platform — Payment Point Online Bank — spanning a customer-facing progressive web app, an admin dashboard for vouchers and flash sales, and a Go middleware that ties them together. Launched April 2026 with around 500 active users. I came on board in August 2026 and worked across the customer and admin surfaces.',
+    lead: 'PPOB is POSe ID\'s payment platform — Payment Point Online Bank — spanning a customer-facing progressive web app, an admin dashboard for vouchers and flash sales, and a Go middleware that ties them together. Launched April 2026 with around 500 active users. I came on board in August 2026 and worked across the customer and admin surfaces.',
     sections: [
       {
         heading: 'Architecture',
@@ -210,7 +210,7 @@ export const projects: Project[] = [
       'Admin reporting dashboard — sales, approvals, ticket metrics',
     ],
     stack: ['ReactJS', 'Vite', 'Storybook', 'Redux Toolkit', 'Tailwind'],
-    lead: 'TAP is the mobile-first FSM the sales and field ops teams actually carry — sales visits, transaction submissions, approvals, ticketing — all on a phone. It\'s also where the PCS front-end stack visibly modernized: React, Vite, Storybook, Redux Toolkit, Tailwind, replacing the inherited Vue/Vuex/Bootstrap pattern Portal and MENTOR sit on. Built the mobile views the field agents use daily plus the admin reporting surface management reads from.',
+    lead: 'TAP is the mobile-first FSM the sales and field ops teams actually carry — sales visits, transaction submissions, approvals, ticketing — all on a phone. It\'s also where the POSe ID front-end stack visibly modernized: React, Vite, Storybook, Redux Toolkit, Tailwind, replacing the inherited Vue/Vuex/Bootstrap pattern Portal and MENTOR sit on. Built the mobile views the field agents use daily plus the admin reporting surface management reads from.',
     sections: [
       {
         heading: 'My contribution',
@@ -218,7 +218,7 @@ export const projects: Project[] = [
       },
       {
         heading: 'Why it matters',
-        body: 'This is where the team\'s stack pivot is visible — every later PCS project (RE-KerjaYuk!, KY-Loyalty) shipped on this same React / Redux Toolkit / Tailwind / Vite / Storybook combination.',
+        body: 'This is where the team\'s stack pivot is visible — every later POSe ID project (RE-KerjaYuk!, KY-Loyalty) shipped on this same React / Redux Toolkit / Tailwind / Vite / Storybook combination.',
       },
     ],
     highlights: [
@@ -288,7 +288,7 @@ export const projects: Project[] = [
       'Same React + Vite + Storybook + Redux Toolkit + Tailwind stack as TAP / RE-KerjaYuk!',
       'Installable, mobile-friendly PWA surface',
       'Sits alongside POSe as part of the merchant engagement loop',
-      'Single-purpose, lightest project in the PCS portfolio',
+      'Single-purpose, lightest project in the POSe ID portfolio',
     ],
     pullQuote:
       'PWA first, website second — the install boundary shaped more decisions than the rewards logic.',

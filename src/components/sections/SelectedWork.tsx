@@ -67,7 +67,7 @@ export function SelectedWork() {
             >
               Seven products, four years, one team. Internal tools that
               <br className="hidden md:block" />
-              run the day-to-day of PCS operations.
+              run the day-to-day of POSe operations.
             </p>
           </div>
         </Reveal>

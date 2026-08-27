@@ -9,7 +9,7 @@ import reKerjaYuk from '@/assets/images/re-kerja-yuk.jpg';
 import kyLoyalty from '@/assets/images/ky-loyalty.jpg';
 import posePpob from '@/assets/images/poseppob.jpg';
 
-/* Real PCS product screenshots (downloaded from previously-deployed portfolio). */
+/* Real POSe ID product screenshots (downloaded from previously-deployed portfolio). */
 const IMAGE_BY_PROJECT: Record<string, string> = {
   'POSe PPOB': posePpob,
   'POSe Portal': posePortal,
