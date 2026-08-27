@@ -295,6 +295,50 @@ export const projects: Project[] = [
   },
 ];
 
+export interface ExperienceEntry {
+  company: string;
+  location: string;
+  role: string;
+  period: string;
+  current?: boolean;
+  bullets: string[];
+}
+
+export const experience: ExperienceEntry[] = [
+  {
+    company: 'POSe ID',
+    location: 'South Tangerang',
+    role: 'Front-end Developer',
+    period: '02/2023 — Present',
+    current: true,
+    bullets: [
+      'Owned frontend across seven products — Portal, External, MENTOR, TAP, RE-KerjaYuk! (HRIS), KY-Loyalty, and PPOB.',
+      'Drove the stack migration from Vue/Vuex/Bootstrap to React/Redux Toolkit + Vite + Storybook.',
+      'Worked across admin, HRIS, merchant-facing, field operations, and customer surfaces.',
+    ],
+  },
+  {
+    company: 'Tigernix Indonesia',
+    location: 'Batam',
+    role: 'Software Engineer',
+    period: '10/2021 — 12/2022',
+    bullets: [
+      'Software engineering across enterprise products and internal tooling.',
+      'Worked across frontend and backend layers on shipping features end to end.',
+    ],
+  },
+  {
+    company: 'Kominfo',
+    location: 'Padang',
+    role: 'Full Stack Developer (Internship)',
+    period: '12/2018 — 02/2019',
+    bullets: [
+      'Three-month full-stack internship building internal tools.',
+      'Contributed to web applications alongside a senior engineering team.',
+    ],
+  },
+];
+
 export interface SkillGroup {
   label: string;
   items: string[];
@@ -329,7 +373,8 @@ export const techStack: SkillGroup[] = [
 
 export const nav = [
   { label: 'About', href: '#about', n: '01' },
-  { label: 'Work', href: '#work', n: '02' },
-  { label: 'Stack', href: '#stack', n: '03' },
-  { label: 'Contact', href: '#contact', n: '04' },
+  { label: 'Experience', href: '#experience', n: '02' },
+  { label: 'Work', href: '#work', n: '03' },
+  { label: 'Stack', href: '#stack', n: '04' },
+  { label: 'Contact', href: '#contact', n: '05' },
 ] as const;

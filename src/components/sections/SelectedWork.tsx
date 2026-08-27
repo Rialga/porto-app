@@ -52,7 +52,7 @@ export function SelectedWork() {
   return (
     <section id="work" className="border-t border-[var(--border-soft)] py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
-        <SectionLabel number="02" label="Selected Work" />
+        <SectionLabel number="03" label="Selected Work" />
 
         <Reveal>
           <div className="mt-10 mb-10 flex flex-wrap items-end justify-between gap-4">
